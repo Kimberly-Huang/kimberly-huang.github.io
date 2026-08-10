@@ -1195,7 +1195,6 @@ a {
   width: 100%;
   max-height: 520px;
   border-radius: var(--radius);
-  filter: saturate(0.72) contrast(1.02);
   object-fit: cover;
   object-position: 50% 36%;
 }
