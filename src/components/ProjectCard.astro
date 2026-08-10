@@ -17,14 +17,13 @@ const { project, compact = false } = Astro.props;
       <span>{project.number}</span>
       <span>{project.eyebrow}</span>
       {project.award && <strong>{project.award}</strong>}
-      {project.confidential && <strong>Selected details</strong>}
     </div>
     <h3>{project.title}</h3>
     <p>{project.summary}</p>
     {!compact && (
       <dl class="project-evidence">
         <div><dt>My role</dt><dd>{project.contribution}</dd></div>
-        <div><dt>Proof</dt><dd>{project.outcome}</dd></div>
+        <div><dt>Outcome</dt><dd>{project.outcome}</dd></div>
       </dl>
     )}
     <div class="project-footer">

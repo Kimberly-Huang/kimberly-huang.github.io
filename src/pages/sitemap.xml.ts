@@ -2,10 +2,9 @@ import type { APIRoute } from "astro";
 
 const routes = [
   "/",
-  "/work/dwt-enterprise-ai",
   "/work/crewverify",
   "/work/student-signal-copilot",
-  "/work/swift-omnichannel",
+  "/work/lablens",
 ];
 
 export const GET: APIRoute = ({ site }) => {

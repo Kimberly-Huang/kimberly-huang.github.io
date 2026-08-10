@@ -7,114 +7,84 @@ export type Project = {
   contribution: string;
   outcome: string;
   tags: string[];
-  preview: "dwt" | "crewverify" | "signal" | "swift" | "lablens" | "tabflow" | "repairs";
+  preview: "crewverify" | "signal" | "lablens" | "tabflow" | "repairs";
   demo?: string;
   repo?: string;
   award?: string;
-  confidential?: boolean;
 };
 
 export const featuredProjects: Project[] = [
   {
-    slug: "dwt-enterprise-ai",
-    number: "01",
-    title: "Enterprise AI systems at DWT",
-    eyebrow: "AI & Data Engineer Intern · 2026",
-    summary:
-      "Four internal pilots that turn documents, images and finance workflows into secure, reviewable tools for nontechnical teams.",
-    contribution:
-      "Owned discovery, capability testing, architecture, development, validation and stakeholder handoff across the full delivery cycle.",
-    outcome:
-      "One workflow reviewed 171 PDFs and 7,103 embedded images with zero parsing errors, surfacing 67 exact duplicate pairs for human QA.",
-    tags: ["Applied AI", "Python", "Document AI", "Human-in-the-loop"],
-    preview: "dwt",
-    confidential: true,
-  },
-  {
     slug: "crewverify",
-    number: "02",
+    number: "01",
     title: "CrewVerify",
     eyebrow: "AI operations product · 2026",
     summary:
-      "An AI-assisted paper-timesheet review workflow for construction teams, built around accountable human approval.",
+      "A review workflow that converts photographed construction timesheets into structured records while preserving accountable human approval.",
     contribution:
-      "Designed the product boundary, multimodal extraction route, deterministic validation engine and foreman-to-manager review experience.",
+      "Defined the product boundary and built the multimodal extraction route, deterministic validation engine and two-stage review experience.",
     outcome:
-      "Converts photographed attendance sheets into structured records while routing only verifiable exceptions for human judgment.",
-    tags: ["Next.js", "TypeScript", "Claude Vision", "Validation"],
+      "A deployed workflow with synthetic test scenarios, inspectable exceptions and an explicit approval boundary before export.",
+    tags: ["Next.js", "TypeScript", "Vision AI", "Validation"],
     preview: "crewverify",
     demo: "https://crewverify.vercel.app",
     repo: "https://github.com/Kimberly-Huang/crewverify",
   },
   {
     slug: "student-signal-copilot",
-    number: "03",
+    number: "02",
     title: "Student Signal Copilot",
     eyebrow: "Multi-agent workflow · NYC Tech Week",
     summary:
-      "A closed-loop facilities copilot that turns student observations into grounded work orders and verifies whether reality changed.",
+      "A facilities copilot that turns student observations into grounded work orders and verifies whether a reported issue was actually resolved.",
     contribution:
-      "Co-built the signal-to-verification product, confidence model, agent orchestration and auditable operator experience.",
+      "Co-built the signal-to-verification workflow, confidence model, specialist-agent orchestration and auditable operator experience.",
     outcome:
-      "Won 3rd Place Overall at The City Hacks The State during NYC Tech Week 2026.",
-    tags: ["Agentic AI", "TypeScript", "CriticalAsset", "Public data"],
+      "Awarded 3rd Place Overall at The City Hacks The State during NYC Tech Week 2026.",
+    tags: ["Agentic AI", "TypeScript", "Public data", "Human review"],
     preview: "signal",
     repo: "https://github.com/lvelf/Student-Signal-Copilot",
     award: "3rd Place Overall",
   },
   {
-    slug: "swift-omnichannel",
-    number: "04",
-    title: "Swift Omnichannel Strategy",
-    eyebrow: "Decision analytics · 2026",
+    slug: "lablens",
+    number: "03",
+    title: "LabLens",
+    eyebrow: "AI learning product · 2026",
     summary:
-      "An executive decision system for identifying, activating and validating first-online-conversion opportunities.",
+      "Interactive STEM mini-labs that diagnose a learner’s misconception before offering a targeted Socratic hint.",
     contribution:
-      "Structured the analytical narrative, customer scoring, out-of-time validation and interactive decision dashboard.",
+      "Designed and built the misconception-first learning flow, interactive experiments and teacher-ready session reports.",
     outcome:
-      "Processed 150M+ transaction line items and ranked 2.56M physical-only customers across a 25-month dataset.",
-    tags: ["Python", "DuckDB", "Parquet", "Chart.js"],
-    preview: "swift",
-    demo: "https://mtd-website-tau.vercel.app",
-    repo: "https://github.com/Kimberly-Huang/mtd-website",
-    confidential: true,
+      "Three deployed mini-labs with a working AI coaching route and a resilient offline fallback.",
+    tags: ["Next.js", "Learning design", "LLM orchestration"],
+    preview: "lablens",
+    demo: "https://lablens-gules.vercel.app",
+    repo: "https://github.com/Kimberly-Huang/Lablens",
   },
 ];
 
 export const additionalProjects: Project[] = [
   {
-    slug: "lablens",
-    number: "05",
-    title: "LabLens",
-    eyebrow: "Socratic STEM tutor",
-    summary: "Interactive mini-labs that diagnose misconceptions before offering a targeted hint.",
-    contribution: "Built a misconception-first learning experience with live experiments and teacher-ready reports.",
-    outcome: "Three working STEM labs with a deployed AI coaching flow and offline fallback.",
-    tags: ["Next.js", "Qwen", "Learning design"],
-    preview: "lablens",
-    demo: "https://lablens-gules.vercel.app",
-    repo: "https://github.com/Kimberly-Huang/Lablens",
-  },
-  {
     slug: "tabflow",
-    number: "06",
+    number: "04",
     title: "TabFlow",
-    eyebrow: "Chrome productivity extension",
-    summary: "A privacy-aware new-tab workspace that groups browser tabs into AI-generated missions.",
-    contribution: "Designed the local-first interaction model, provider-flexible AI setup and tab-management experience.",
-    outcome: "A serverless Manifest V3 extension with caching, custom rules and cross-device sync.",
+    eyebrow: "Browser productivity",
+    summary: "A privacy-aware new-tab workspace that organizes open tabs into focused missions.",
+    contribution: "Designed the local-first interaction model and provider-flexible AI setup.",
+    outcome: "A serverless Manifest V3 extension with custom rules and cross-device sync.",
     tags: ["JavaScript", "Chrome MV3", "Local-first"],
     preview: "tabflow",
     repo: "https://github.com/Kimberly-Huang/Tabflow",
   },
   {
     slug: "signal-repairs",
-    number: "07",
+    number: "05",
     title: "signal.repairs",
-    eyebrow: "DeveloperWeek hackathon",
-    summary: "Early warning and repair guidance for weak signals in open-source software supply chains.",
-    contribution: "Built the dependency analysis, web-signal pipeline, AI assessment and repair dashboard experience.",
-    outcome: "A full-stack prototype combining live web intelligence, scheduled pipelines and bounded repair actions.",
+    eyebrow: "Software intelligence",
+    summary: "Early-warning signals and repair guidance for open-source software supply chains.",
+    contribution: "Built dependency analysis, web-signal collection and the repair dashboard.",
+    outcome: "A full-stack prototype with scheduled intelligence and bounded repair actions.",
     tags: ["FastAPI", "Next.js", "Web intelligence"],
     preview: "repairs",
     repo: "https://github.com/Kimberly-Huang/signal-repairs",

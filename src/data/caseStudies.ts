@@ -7,92 +7,22 @@ export type CaseStudy = {
   flow: { label: string; title: string; body: string; evidence: string }[];
   sections: { eyebrow: string; title: string; body: string[] }[];
   principles: string[];
-  disclosure?: string;
 };
 
 export const caseStudies: Record<string, CaseStudy> = {
-  "dwt-enterprise-ai": {
-    slug: "dwt-enterprise-ai",
-    thesis:
-      "Turn ambiguous internal requests into bounded, secure tools that fit the way employees already work.",
-    role:
-      "I owned the path from use-case discovery and platform capability testing through architecture, development, validation and stakeholder handoff.",
-    context:
-      "Deutsche Windtechnik operates across technical, finance and enterprise workflows where the source material is often unstructured, sensitive and tied to existing Office processes.",
-    metrics: [
-      { value: "04", label: "enterprise pilots built" },
-      { value: "171", label: "PDF reports validated" },
-      { value: "7,103", label: "embedded images reviewed" },
-      { value: "0", label: "PDF parsing errors" },
-    ],
-    flow: [
-      {
-        label: "Discover",
-        title: "Start with the workflow—not the model.",
-        body: "Clarify the operator, source files, review decision, acceptable risk and evidence needed before choosing a technical path.",
-        evidence: "Use cases across document generation, image QA, finance and local search.",
-      },
-      {
-        label: "Test",
-        title: "Verify the real system boundary.",
-        body: "Test whether enterprise agents can actually access the required file content, image pixels and tool layer instead of relying on capability claims.",
-        evidence: "Identified where SharePoint indexing exposed text but not embedded PDF image data.",
-      },
-      {
-        label: "Build",
-        title: "Use a hybrid AI + deterministic architecture.",
-        body: "Apply generative AI where interpretation helps, then constrain layout, calculations, identity, evidence and export behavior with ordinary code.",
-        evidence: "Editable Office generation, exact image matching and local browser data processing.",
-      },
-      {
-        label: "Deliver",
-        title: "Package the tool for the employee.",
-        body: "Design zero-install or authenticated pilot experiences, document limitations and preserve a human approval boundary for consequential decisions.",
-        evidence: "Private deployment, CI, branded outputs and stakeholder-ready handoff packages.",
-      },
-    ],
-    sections: [
-      {
-        eyebrow: "The portfolio",
-        title: "Four pilots, one delivery method.",
-        body: [
-          "A document-generation platform combines AI planning with deterministic PPTX and DOCX rendering, official templates, authentication and private file storage.",
-          "An image QA workflow extracts embedded photos from supplier reports, finds exact reuse and presents side-by-side evidence without making the final compliance decision.",
-          "A local accounts-receivable dashboard preserves the Finance team’s Excel source of truth while adding collection views, statement review and branded PDF output.",
-          "A local document-notes search tool indexes Planner exports entirely in browser memory and returns explainable evidence without uploading company data.",
-        ],
-      },
-      {
-        eyebrow: "Product judgment",
-        title: "The strongest decision was often what not to automate.",
-        body: [
-          "Exact duplicate detection can establish that two embedded image streams are identical; it cannot determine whether a particular reuse is operationally acceptable. The product therefore prioritizes evidence for a reviewer instead of labeling misconduct.",
-          "The finance pilot reads the maintained workbook rather than replacing the team’s established process. This reduced implementation risk and kept employee-owned notes and source calculations intact.",
-        ],
-      },
-    ],
-    principles: [
-      "Sensitive data stays inside the approved processing boundary.",
-      "Every pilot states what it can and cannot conclude.",
-      "AI is paired with deterministic guards and human review.",
-      "Delivery includes the operator experience, not only the model call.",
-    ],
-    disclosure:
-      "This case study intentionally uses aggregated metrics and architecture-level detail. Company files, internal interfaces, customer data and access credentials are not shown.",
-  },
   crewverify: {
     slug: "crewverify",
     thesis:
       "Use AI for difficult visual transcription, deterministic code for observable checks and people for accountable approval.",
     role:
-      "I designed and built the product boundary, authenticated extraction route, validation engine, review stages and audit-oriented interface.",
+      "I defined the product boundary and built the authenticated extraction route, validation engine, review stages and audit-oriented interface.",
     context:
       "Paper timesheets remain practical on construction sites, but office review is repetitive and errors can affect payroll preparation, job costing and accountability.",
     metrics: [
       { value: "03", label: "synthetic failure scenarios" },
       { value: "02", label: "human approval stages" },
       { value: "07", label: "deterministic checks" },
-      { value: "01", label: "approved CSV export" },
+      { value: "01", label: "approved export" },
     ],
     flow: [
       {
@@ -104,14 +34,14 @@ export const caseStudies: Record<string, CaseStudy> = {
       {
         label: "Extract",
         title: "Ask the model to transcribe—not decide.",
-        body: "Claude Vision returns schema-constrained attendance fields and is instructed to leave unreadable values empty instead of guessing.",
+        body: "The vision model returns schema-constrained attendance fields and leaves unreadable values empty instead of guessing.",
         evidence: "The model does not match employees, calculate hours or approve a record.",
       },
       {
         label: "Validate",
-        title: "Route exceptions using facts the application can verify.",
+        title: "Route exceptions using observable facts.",
         body: "Code checks required fields, unique roster matches, title alignment, hours differences, duplicate rows and long shifts.",
-        evidence: "Routing does not depend on an LLM’s self-reported confidence.",
+        evidence: "Routing does not depend on a model’s self-reported confidence.",
       },
       {
         label: "Approve",
@@ -123,18 +53,18 @@ export const caseStudies: Record<string, CaseStudy> = {
     sections: [
       {
         eyebrow: "Product thesis",
-        title: "AI reads. Deterministic code checks. People decide.",
+        title: "A narrow architecture is more credible than broad autonomy.",
         body: [
-          "The initial idea could have been presented as a multi-agent review system. A narrower architecture was more credible: probabilistic perception only where it is useful, inspectable rules for routing and named human owners for judgment.",
+          "Probabilistic perception is used only where it is valuable. Inspectable rules handle routing, and named human owners retain responsibility for judgment.",
           "This separation makes the workflow easier to test and prevents model confidence from being mistaken for evidence.",
         ],
       },
       {
         eyebrow: "Safety boundary",
-        title: "The product deliberately stops before payroll and legal judgment.",
+        title: "The product deliberately stops before payroll judgment.",
         body: [
-          "CrewVerify does not certify payroll, interpret collective bargaining agreements, classify prevailing wages or make legal determinations.",
-          "Uploaded images are processed server-side, the model key never reaches the browser and AI output cannot approve its own work.",
+          "CrewVerify does not certify payroll, interpret agreements or make legal determinations.",
+          "Uploaded images are processed server-side, credentials never reach the browser and AI output cannot approve its own work.",
         ],
       },
     ],
@@ -152,7 +82,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     role:
       "I co-built the multi-agent product, operator experience, confidence model and signal-to-verification narrative with Rosemary Li and Nuo Chen.",
     context:
-      "Facilities teams receive fragmented observations and work orders. Important recurring issues can remain buried when reports are incomplete, disconnected or never verified after closure.",
+      "Facilities teams receive fragmented observations and work orders. Recurring issues can remain buried when reports are incomplete, disconnected or never verified after closure.",
     metrics: [
       { value: "3rd", label: "place overall" },
       { value: "07", label: "specialist agents" },
@@ -163,42 +93,42 @@ export const caseStudies: Record<string, CaseStudy> = {
       {
         label: "Signal",
         title: "Capture field truth in one sentence.",
-        body: "A student reports what they can directly observe, with an optional photo, before the system asks them to understand facilities terminology.",
+        body: "A student reports what they can directly observe, with an optional photo, before needing to understand facilities terminology.",
         evidence: "The student’s own observation is the only claim labeled Verified at intake.",
       },
       {
         label: "Evidence",
         title: "Ground the report in real assets and public data.",
-        body: "Specialists structure the report, match a CriticalAsset record and enrich it with relevant NYC DOB and 311 signals.",
+        body: "Specialists structure the report, match an asset record and enrich it with relevant public signals.",
         evidence: "Claims are labeled Verified, Likely, Inferred, Missing or Needs inspection.",
       },
       {
         label: "Action",
-        title: "Draft the next best step without taking control.",
-        body: "The supervisor assembles an auditable work order, evidence checklist and routing recommendation while humans retain execution authority.",
+        title: "Draft the next step without taking control.",
+        body: "The system assembles an auditable work order, evidence checklist and routing recommendation while people retain execution authority.",
         evidence: "Agent sequence, model tier and routing reason remain visible to the operator.",
       },
       {
         label: "Verify",
         title: "Close the loop with the original reporter.",
-        body: "The student confirms fixed, still happening or worse; unresolved issues reopen and feed the portfolio-level pattern view.",
+        body: "The student confirms fixed, still happening or worse; unresolved issues reopen and feed a portfolio-level view.",
         evidence: "Closure measures both resolution and reporter satisfaction.",
       },
     ],
     sections: [
       {
-        eyebrow: "Why it stood out",
+        eyebrow: "System design",
         title: "More agents did not mean more autonomy.",
         body: [
-          "The system decomposes a complex reasoning task into narrow specialists, but deliberately gives none of them execution power. Grounding and public-data matching use deterministic rules; the most expensive model is reserved for cross-signal pattern recognition.",
-          "A deterministic urgent guarantee raises high-severity, recurring and unresolved issues even if a model fails to recognize the pattern.",
+          "The workflow decomposes a complex reasoning task into narrow specialists, but deliberately gives none of them execution power.",
+          "A deterministic urgent guarantee raises severe, recurring and unresolved issues even if a model misses the pattern.",
         ],
       },
       {
         eyebrow: "Outcome",
-        title: "A real operational workflow, not a hypothetical chatbot.",
+        title: "A working operational workflow, not a hypothetical chatbot.",
         body: [
-          "The team used the live CriticalAsset API and built both an operator dashboard and a streamed, inspectable copilot experience.",
+          "The team built both an operator dashboard and a streamed, inspectable copilot experience grounded in real asset and public data.",
           "The project earned 3rd Place Overall at The City Hacks The State during NYC Tech Week 2026.",
         ],
       },
@@ -210,71 +140,69 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Ask the original reporter whether the fix worked.",
     ],
   },
-  "swift-omnichannel": {
-    slug: "swift-omnichannel",
+  lablens: {
+    slug: "lablens",
     thesis:
-      "Build an executive decision chain that preserves analytical depth without making the audience navigate a report to find the recommendation.",
+      "An effective tutor should diagnose the misconception first, then offer the smallest useful intervention.",
     role:
-      "I structured the data pipeline, rules-based customer prioritization, validation strategy and interactive dashboard narrative.",
+      "I designed and built the interactive lab experience, misconception checks, coaching route, fallback behavior and teacher-facing session summary.",
     context:
-      "The analysis needed to identify physical-only customers most likely to make a first online purchase while keeping customer, channel and geography claims analytically separate.",
+      "Students often receive explanations before anyone checks why their mental model is failing. LabLens turns that diagnostic moment into the center of the learning flow.",
     metrics: [
-      { value: "150M+", label: "transaction line items" },
-      { value: "2.56M", label: "customers ranked" },
-      { value: "25", label: "months analyzed" },
-      { value: "17", label: "interactive charts" },
+      { value: "03", label: "interactive mini-labs" },
+      { value: "03", label: "diagnostic stages" },
+      { value: "01", label: "teacher report" },
+      { value: "24/7", label: "offline fallback" },
     ],
     flow: [
       {
-        label: "Diagnose",
-        title: "Establish where the conversion gap lives.",
-        body: "Profile customer behavior, channel engagement, comments, timing and geography across complete historical coverage.",
-        evidence: "Python and DuckDB scan partitioned Parquet data without loading the full dataset into memory.",
+        label: "Predict",
+        title: "Ask for a commitment before the experiment.",
+        body: "The learner predicts an outcome and briefly explains their reasoning before seeing the result.",
+        evidence: "The response creates a diagnostic signal rather than a passive completion event.",
       },
       {
-        label: "Prioritize",
-        title: "Rank customers with an inspectable score.",
-        body: "A rules-based Priority Score combines value, engagement, readiness, momentum and age into five activation bands.",
-        evidence: "The score remains explainable to business stakeholders rather than hiding ranking logic in a black box.",
+        label: "Test",
+        title: "Let the learner manipulate the system.",
+        body: "A small interactive experiment makes the relevant relationship visible and repeatable.",
+        evidence: "The interface links controls, observed behavior and the learner’s original prediction.",
       },
       {
-        label: "Design",
-        title: "Keep two pilots analytically separate.",
-        body: "Coordinate a customer-level CRM activation pilot with a geography-level store rollout without claiming a customer-to-store join the data cannot support.",
-        evidence: "Every chart states its unit, period, population and source table.",
+        label: "Coach",
+        title: "Respond to the misconception, not just the answer.",
+        body: "The coaching route selects a concise Socratic prompt based on the learner’s reasoning and observed result.",
+        evidence: "A deterministic fallback preserves the lesson when the AI route is unavailable.",
       },
       {
-        label: "Validate",
-        title: "Test the ranking against future behavior.",
-        body: "Use observed month-over-month conversions outside the scoring window to verify that higher-priority bands convert at higher rates.",
-        evidence: "The dashboard exposes success criteria, ruled-out hypotheses and data-availability safeguards.",
+        label: "Reflect",
+        title: "Check whether the model changed.",
+        body: "A follow-up question asks the learner to apply the idea again and records the session for teacher review.",
+        evidence: "The report distinguishes initial reasoning, intervention and follow-up response.",
       },
     ],
     sections: [
       {
-        eyebrow: "Decision product",
-        title: "The overview answers what to do; the evidence tabs explain why.",
+        eyebrow: "Learning design",
+        title: "The interaction is the evidence.",
         body: [
-          "The landing view presents five decisions—diagnose, prioritize, design, orchestrate and validate—plus two coordinated pilot plans.",
-          "Detailed sections preserve methods, customer drill-downs, messaging evidence, channel findings, timing filters, geographic rollout controls and proof.",
+          "The product does not treat time-on-page as understanding. It captures a prediction, an observed experiment and a follow-up explanation.",
+          "This creates a compact trail a teacher can inspect without turning the tutor into an automated grader.",
         ],
       },
       {
-        eyebrow: "Data responsibility",
-        title: "Large-scale analysis without exposing customer-level data.",
+        eyebrow: "Resilience",
+        title: "The core lesson should not depend on a model call.",
         body: [
-          "Offline processing produces aggregate arrays for the browser. The application does not query the 150M-row source at view time and no customer-level payload is shipped to the client.",
-          "The public portfolio shows architecture and aggregate metrics only; access to the full strategy dashboard remains protected.",
+          "Each lab includes a bounded offline path so the activity remains useful when an external model is unavailable.",
+          "AI improves the specificity of the coaching prompt; it is not allowed to become the only source of instructional value.",
         ],
       },
     ],
     principles: [
-      "Make ranking logic explainable.",
-      "Validate recommendations out of time.",
-      "Label populations and units on every chart.",
-      "Do not claim joins the source data cannot support.",
+      "Diagnose before explaining.",
+      "Prefer one useful hint to a complete answer.",
+      "Make reasoning visible to the learner and teacher.",
+      "Keep the core learning experience resilient.",
     ],
-    disclosure:
-      "The underlying dataset is proprietary. This case study uses aggregate scale, methods and product architecture; raw records and protected dashboard content are not published.",
   },
 };
