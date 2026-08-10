@@ -10,31 +10,47 @@ interface Props {
 const { project, compact = false } = Astro.props;
 ---
 
-<article class:list={["project-card", compact && "project-card-compact"]}>
-  <ProjectPreview kind={project.preview} />
-  <div class="project-copy">
-    <div class="project-kicker">
-      <span class="project-number">{project.number}</span>
-      <span>{project.eyebrow}</span>
-      {project.award && <strong>{project.award}</strong>}
+{compact ? (
+  <article class="project-row">
+    <span class="project-number">{project.number}</span>
+    <div class="project-row-title">
+      <h4>{project.title}</h4>
+      <p>{project.eyebrow}</p>
     </div>
-    <h3>{project.title}</h3>
-    <p>{project.summary}</p>
-    {!compact && (
+    <p class="project-row-summary">{project.summary}</p>
+    <a href={project.repo ?? `/work/${project.slug}`} target={project.repo ? "_blank" : undefined} rel={project.repo ? "noreferrer" : undefined} aria-label={`View ${project.title}`}>
+      <span aria-hidden="true">↗</span>
+    </a>
+  </article>
+) : (
+  <article class:list={["project-card", `project-card-${project.preview}`]}>
+    <a class="project-visual-link" href={`/work/${project.slug}`} aria-label={`Read ${project.title} case study`}>
+      <ProjectPreview kind={project.preview} />
+    </a>
+    <div class="project-copy">
+      <div class="project-meta">
+        <span>{project.number}</span>
+        <p>{project.eyebrow}</p>
+        {project.award && <strong>{project.award}</strong>}
+      </div>
+      <div class="project-intro">
+        <h3>{project.title}</h3>
+        <p>{project.summary}</p>
+      </div>
       <dl class="project-evidence">
-        <div><dt>My role</dt><dd>{project.contribution}</dd></div>
-        <div><dt>Outcome</dt><dd>{project.outcome}</dd></div>
+        <div><dt>Contribution</dt><dd>{project.contribution}</dd></div>
+        <div><dt>Evidence</dt><dd>{project.outcome}</dd></div>
       </dl>
-    )}
-    <div class="project-footer">
-      <ul aria-label={`${project.title} technologies`}>
-        {project.tags.map((tag) => <li>{tag}</li>)}
-      </ul>
-      <div class="project-links">
-        {!compact && <a class="project-action project-action-primary" href={`/work/${project.slug}`}>Read case study <span aria-hidden="true">→</span></a>}
-        {project.demo && <a class="project-action" href={project.demo} target="_blank" rel="noreferrer">Live product <span aria-hidden="true">↗</span></a>}
-        {project.repo && <a class="project-action" href={project.repo} target="_blank" rel="noreferrer">Source code <span aria-hidden="true">↗</span></a>}
+      <div class="project-footer">
+        <ul aria-label={`${project.title} technologies`}>
+          {project.tags.map((tag) => <li>{tag}</li>)}
+        </ul>
+        <div class="project-links">
+          <a class="project-action project-action-primary" href={`/work/${project.slug}`}>Case study <span aria-hidden="true">→</span></a>
+          {project.demo && <a class="project-action" href={project.demo} target="_blank" rel="noreferrer">Live product <span aria-hidden="true">↗</span></a>}
+          {project.repo && <a class="project-action" href={project.repo} target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>}
+        </div>
       </div>
     </div>
-  </div>
-</article>
+  </article>
+)}

@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-  title = "Kimberly Huang — Applied AI & Data Engineer",
-  description = "Kimberly Huang is an applied AI and data engineer building reliable products for operational teams.",
+  title = "Kimberly Huang — Applied AI Engineer",
+  description = "Kimberly Huang builds applied AI systems that people can inspect, trust and use.",
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
@@ -45,7 +45,7 @@ const structuredData = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#f3efe7" />
+    <meta name="theme-color" content="#f3f1ec" />
     <meta name="color-scheme" content="light" />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.png" type="image/png" />
@@ -105,7 +105,9 @@ const structuredData = {
         });
       };
 
-      if (observedSections.length) {
+      if (window.location.pathname.startsWith("/work/")) {
+        setActiveSection("work");
+      } else if (observedSections.length) {
         let activeFrame = 0;
         const updateActiveSection = () => {
           const readingLine = window.scrollY + Math.min(window.innerHeight * 0.3, 220);

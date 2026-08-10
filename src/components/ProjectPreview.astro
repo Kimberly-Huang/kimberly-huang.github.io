@@ -7,77 +7,69 @@ const { kind } = Astro.props;
 ---
 
 <div class:list={["project-preview", `preview-${kind}`]} aria-hidden="true">
-  <div class="preview-chrome">
-    <span>Portfolio preview</span>
-    <span>Synthetic example</span>
+  <div class="preview-labels">
+    <span>Purpose-built illustration</span>
+    <span>{kind === "crewverify" ? "Synthetic records" : "System logic"}</span>
   </div>
 
   {kind === "crewverify" && (
-    <div class="preview-canvas crew-canvas">
-      <div class="preview-titlebar"><div><span class="status-dot"></span>CrewVerify</div><strong>Review workspace</strong></div>
-      <div class="crew-layout">
-        <div class="paper-sheet">
-          <p>Timesheet · 0426</p>
-          <div><span>ML</span><b>M. Lewis</b><i>Ready</i></div>
-          <div class="needs-review"><span>AR</span><b>A. Rivera</b><i>Review</i></div>
-          <div><span>JT</span><b>J. Torres</b><i>Ready</i></div>
+    <div class="crew-art">
+      <div class="crew-source">
+        <span class="art-caption">Field record / 0426</span>
+        <div class="sheet-grid">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
         </div>
-        <div class="review-stack">
-          <p>3 verifiable exceptions</p>
-          <div><span>01</span><b>AI transcribes</b><i>Complete</i></div>
-          <div><span>02</span><b>Rules validate</b><i>3 flags</i></div>
-          <div><span>03</span><b>People approve</b><i>Required</i></div>
-        </div>
+        <div class="sheet-stamp">Captured</div>
+      </div>
+      <div class="crew-bridge">
+        <span>01</span><i></i><span>02</span><i></i><span>03</span>
+        <p>Transcribe<br />Validate<br />Approve</p>
+      </div>
+      <div class="crew-output">
+        <span class="art-caption">Accountable review</span>
+        <div class="review-line"><span>ML</span><b>M. Lewis</b><i>Ready</i></div>
+        <div class="review-line flagged"><span>AR</span><b>A. Rivera</b><i>Review</i></div>
+        <div class="review-line"><span>JT</span><b>J. Torres</b><i>Ready</i></div>
+        <p>2-stage human approval</p>
       </div>
     </div>
   )}
 
   {kind === "signal" && (
-    <div class="preview-canvas signal-canvas">
-      <div class="preview-titlebar"><div><span class="status-dot"></span>Student Signal Copilot</div><strong>3rd Place Overall</strong></div>
-      <div class="signal-report">
-        <span>Student observation</span>
-        <p>“The second-floor bathroom is flooding again.”</p>
-      </div>
-      <div class="signal-pipeline">
-        <div><b>01</b><span>Signal</span><i>Captured</i></div>
-        <div><b>02</b><span>Evidence</span><i>Grounded</i></div>
-        <div><b>03</b><span>Action</span><i>Drafted</i></div>
-        <div><b>04</b><span>Verify</span><i>Student</i></div>
-      </div>
-      <div class="audit-strip"><span>Asset matched</span><span>Confidence labeled</span><span>Human execution</span></div>
+    <div class="signal-art">
+      <div class="signal-origin"><span>Student signal</span><p>“It is flooding again.”</p><i></i></div>
+      <svg class="signal-paths" viewBox="0 0 700 330" preserveAspectRatio="none">
+        <path d="M110 165 C220 165 210 75 345 75 S500 75 590 75" />
+        <path d="M110 165 C220 165 210 255 345 255 S500 255 590 255" />
+        <path class="signal-loop" d="M590 255 C650 255 650 165 590 165 C500 165 480 190 430 190" />
+      </svg>
+      <div class="signal-node signal-node-a"><span>01</span><b>Ground</b><small>Asset + evidence</small></div>
+      <div class="signal-node signal-node-b"><span>02</span><b>Route</b><small>Human action</small></div>
+      <div class="signal-node signal-node-c"><span>03</span><b>Verify</b><small>Reporter closes loop</small></div>
+      <div class="signal-proof"><span></span>Evidence remains visible</div>
     </div>
   )}
 
   {kind === "lablens" && (
-    <div class="preview-canvas lablens-canvas">
-      <div class="preview-titlebar"><div><span class="status-dot"></span>LabLens</div><strong>Socratic STEM tutor</strong></div>
-      <div class="lesson-prompt">
-        <span>Physics · Series circuits</span>
-        <p>What happens to current after it passes through the first resistor?</p>
-        <div><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="lab-art">
+      <div class="lab-question"><span>Misconception detected</span><p>Does current get “used up”?</p></div>
+      <div class="circuit-stage">
+        <div class="battery"><i></i><i></i></div>
+        <div class="circuit-wire circuit-wire-top"></div>
+        <div class="resistor resistor-one"><span>R1</span></div>
+        <div class="resistor resistor-two"><span>R2</span></div>
+        <div class="circuit-wire circuit-wire-bottom"></div>
+        <span class="electron electron-a"></span><span class="electron electron-b"></span><span class="electron electron-c"></span>
       </div>
-      <div class="diagnosis-row">
-        <div><span>Detected</span><b>“Current gets used up”</b></div>
-        <div><span>Next move</span><b>Targeted question</b></div>
-        <div><span>Follow-up</span><b>Check the model</b></div>
-      </div>
+      <div class="coach-note"><span>Smallest useful intervention</span><p>Measure before and after R1. What changed?</p></div>
     </div>
   )}
 
   {kind === "tabflow" && (
-    <div class="preview-canvas compact-canvas">
-      <div class="compact-metric"><strong>18</strong><span>open tabs</span></div>
-      <div class="compact-arrow">→</div>
-      <div class="compact-metric"><strong>04</strong><span>focused missions</span></div>
-    </div>
+    <div class="compact-art"><strong>18</strong><span>open tabs</span><i>→</i><strong>04</strong><span>focused missions</span></div>
   )}
 
   {kind === "repairs" && (
-    <div class="preview-canvas compact-canvas">
-      <div class="compact-metric"><strong>Signal</strong><span>weak dependency</span></div>
-      <div class="compact-arrow">→</div>
-      <div class="compact-metric"><strong>Repair</strong><span>bounded action</span></div>
-    </div>
+    <div class="compact-art"><strong>Signal</strong><span>weak dependency</span><i>→</i><strong>Repair</strong><span>bounded action</span></div>
   )}
 </div>

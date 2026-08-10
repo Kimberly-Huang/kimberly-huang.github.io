@@ -9,126 +9,129 @@ import { additionalProjects, featuredProjects } from "../data/projects";
 <BaseLayout>
   <Header />
   <main id="main" class="home-main">
-    <section class="profile-section" id="about" aria-labelledby="profile-title">
-      <p class="section-label">About</p>
-      <h1 id="profile-title">Kimberly Huang</h1>
-      <p class="profile-role">Applied AI &amp; Data Engineer</p>
-      <p class="profile-lede">
-        I build reliable AI and data products for operational teams—combining product
-        judgment, data engineering and human-centered controls.
-      </p>
-      <p class="profile-summary">
-        Currently an AI &amp; Data Engineer Intern at Deutsche Windtechnik and completing an
-        MS in Applied Analytics at Columbia University. I am interested in full-time roles
-        beginning after my December 2026 graduation.
-      </p>
-      <div class="profile-actions">
-        <a class="button button-primary" href="#work">View selected projects</a>
-        <a class="button button-secondary" href="mailto:huang0818hqj@outlook.com">Email me</a>
-      </div>
-      <dl class="profile-facts">
-        <div><dt>Current</dt><dd>AI &amp; Data Engineer Intern</dd></div>
-        <div><dt>Education</dt><dd>Columbia University · MS</dd></div>
-        <div><dt>Location</dt><dd>New York, NY</dd></div>
-      </dl>
-    </section>
-
-    <section class="content-section" id="experience" aria-labelledby="experience-title">
-      <div class="section-header">
-        <div><p class="section-label">Experience</p><h2 id="experience-title">Professional experience</h2></div>
-        <p>Enterprise AI delivery, product analytics and decision support.</p>
-      </div>
-      <div class="experience-list">
-        <article class="experience-card">
-          <div class="experience-heading">
-            <div><h3>AI &amp; Data Engineer Intern</h3><p>Deutsche Windtechnik</p></div>
-            <p>Jun 2026 — Present<br /><span>Houston / Global</span></p>
-          </div>
-          <ul>
-            <li>Evaluate and build AI-assisted workflows for enterprise operations.</li>
-            <li>Translate ambiguous stakeholder requests into bounded, testable products with explicit privacy and review controls.</li>
-          </ul>
-        </article>
-        <article class="experience-card">
-          <div class="experience-heading">
-            <div><h3>Data Analyst</h3><p>Temu</p></div>
-            <p>Jul 2024 — Jun 2025<br /><span>Shenzhen</span></p>
-          </div>
-          <ul>
-            <li>Analyzed acquisition, activation, retention and monetization across more than 20 markets.</li>
-            <li>Automated recurring reporting and translated funnel behavior into recommendations for growth teams.</li>
-          </ul>
-        </article>
-        <article class="experience-card">
-          <div class="experience-heading">
-            <div><h3>Research &amp; Finance Internships</h3><p>Securities research and corporate finance</p></div>
-            <p>2023<br /><span>Beijing / Manchester</span></p>
-          </div>
-          <ul>
-            <li>Worked across equity research, macroeconomic analysis and financial reporting.</li>
-            <li>Built a foundation in evidence-based analysis and executive communication.</li>
-          </ul>
-        </article>
-      </div>
-      <aside class="confidential-note" aria-label="Confidential work policy">
-        <p class="section-label">Confidential work</p>
-        <div>
-          <h3>Professional judgment can be shown without exposing internal material.</h3>
-          <p>
-            Company data, protected interfaces and internal operating details are not reproduced.
-            I describe the problem class, my responsibility, system boundaries and decisions—only
-            at a level appropriate for public review.
-          </p>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="hero-availability"><span aria-hidden="true"></span>New York · Graduating December 2026</p>
+        <h1 id="hero-title">Kimberly Huang</h1>
+        <p class="hero-statement">
+          I build applied AI systems that people can <em>inspect, trust and use.</em>
+        </p>
+        <p class="hero-summary">
+          An AI &amp; data engineer turning ambiguous operational problems into working products—across multimodal review, agent workflows and data-intensive decisions.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#work">Explore selected work <span aria-hidden="true">↓</span></a>
+          <a class="text-action" href="mailto:huang0818hqj@outlook.com">huang0818hqj@outlook.com</a>
         </div>
-      </aside>
+      </div>
+
+      <div class="hero-system" aria-label="From ambiguous signal to accountable outcome">
+        <div class="system-header">
+          <span>How I work</span>
+          <span>01—04</span>
+        </div>
+        <div class="system-track" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <ol>
+          <li><span>01</span><div><strong>Frame</strong><p>Find the consequential decision inside the request.</p></div></li>
+          <li><span>02</span><div><strong>Structure</strong><p>Separate probabilistic work from deterministic rules.</p></div></li>
+          <li><span>03</span><div><strong>Build</strong><p>Make the workflow observable, testable and usable.</p></div></li>
+          <li><span>04</span><div><strong>Prove</strong><p>Keep evidence visible and accountability with people.</p></div></li>
+        </ol>
+        <div class="system-signature">Judgment → system → evidence</div>
+      </div>
     </section>
 
-    <section class="content-section" id="work" aria-labelledby="work-title">
-      <div class="section-header">
-        <div><p class="section-label">Projects <span>({featuredProjects.length})</span></p><h2 id="work-title">Selected public work</h2></div>
-        <p>Each project includes a readable overview, a case study and public proof where available.</p>
+    <section class="work-section" id="work" aria-labelledby="work-title">
+      <div class="section-intro">
+        <p class="section-index">01 / Selected work</p>
+        <div>
+          <h2 id="work-title">Products built to survive the real workflow.</h2>
+          <p>Three end-to-end systems showing how I frame risk, design the human boundary and turn emerging AI capabilities into accountable products.</p>
+        </div>
       </div>
-      <div class="featured-grid">
+
+      <div class="featured-work">
         {featuredProjects.map((project) => <ProjectCard project={project} />)}
       </div>
 
-      <div class="additional-work">
-        <div class="subsection-heading">
-          <h3>Additional projects</h3>
-          <p>Focused builds across productivity and software intelligence.</p>
+      <div class="more-work" aria-labelledby="more-work-title">
+        <div class="more-work-heading">
+          <p class="section-index">In the lab</p>
+          <h3 id="more-work-title">Smaller systems, shipped with intent.</h3>
         </div>
-        <div class="lab-grid">
+        <div class="more-work-list">
           {additionalProjects.map((project) => <ProjectCard project={project} compact />)}
         </div>
       </div>
     </section>
 
-    <section class="content-section" id="education" aria-labelledby="education-title">
-      <div class="section-header">
-        <div><p class="section-label">Education</p><h2 id="education-title">Education &amp; credentials</h2></div>
-        <p>A quantitative foundation across analytics, finance and applied machine learning.</p>
+    <section class="experience-section" id="experience" aria-labelledby="experience-title">
+      <div class="section-intro">
+        <p class="section-index">02 / Experience</p>
+        <div>
+          <h2 id="experience-title">Building inside real constraints.</h2>
+          <p>Experience spanning enterprise AI delivery, product analytics and evidence-based decision support.</p>
+        </div>
       </div>
-      <div class="education-list">
-        <article>
-          <div><h3>Columbia University</h3><p>Master of Science in Applied Analytics · GPA 4.0</p></div>
-          <p>Expected Dec 2026</p>
+
+      <div class="experience-list">
+        <article class="experience-row">
+          <div class="experience-period">2026—Now</div>
+          <div class="experience-role"><h3>AI &amp; Data Engineer Intern</h3><p>Deutsche Windtechnik · Houston / Global</p></div>
+          <p class="experience-description">Evaluate and build AI-assisted workflows for enterprise operations, translating ambiguous stakeholder requests into bounded products with explicit privacy, validation and review controls.</p>
         </article>
-        <article>
-          <div><h3>University of Dundee</h3><p>BSc Applied Finance · Top 1% · ACCA certified</p></div>
-          <p>Undergraduate</p>
+        <article class="experience-row">
+          <div class="experience-period">2024—25</div>
+          <div class="experience-role"><h3>Data Analyst</h3><p>Temu · Shenzhen</p></div>
+          <p class="experience-description">Analyzed acquisition, activation, retention and monetization across more than 20 markets; automated recurring reporting and translated funnel behavior into growth decisions.</p>
+        </article>
+        <article class="experience-row">
+          <div class="experience-period">2023</div>
+          <div class="experience-role"><h3>Research &amp; Finance Internships</h3><p>Securities research and corporate finance</p></div>
+          <p class="experience-description">Worked across equity research, macroeconomic analysis and financial reporting, building an early foundation in rigorous analysis and executive communication.</p>
         </article>
       </div>
+
+      <aside class="work-boundary" aria-label="Confidential work boundary">
+        <span class="boundary-mark" aria-hidden="true">⌁</span>
+        <div>
+          <p class="section-index">A note on professional work</p>
+          <h3>Confidentiality is part of the design constraint.</h3>
+        </div>
+        <p>Protected data, internal interfaces and operating details are intentionally omitted. I show the problem class, my responsibility, system boundaries and decisions at a level appropriate for public review.</p>
+      </aside>
     </section>
 
-    <section class="content-section" id="skills" aria-labelledby="skills-title">
-      <div class="section-header">
-        <div><p class="section-label">Skills</p><h2 id="skills-title">Working toolkit</h2></div>
-        <p>Capabilities I use to frame, build and evaluate data-intensive products.</p>
+    <section class="about-section" id="about" aria-labelledby="about-title">
+      <div class="section-intro">
+        <p class="section-index">03 / About</p>
+        <div>
+          <h2 id="about-title">Technical depth, product judgment.</h2>
+          <p>I am most useful where the problem is consequential, the requirements are still moving and a credible solution needs both engineering and judgment.</p>
+        </div>
       </div>
-      <div class="skill-groups">
-        <article><h3>AI systems</h3><p>LLM orchestration · Multimodal extraction · Evaluation · RAG · Human review · Guardrails</p></article>
-        <article><h3>Engineering</h3><p>Python · TypeScript · SQL · Next.js · FastAPI · APIs · GitHub Actions · Vercel</p></article>
-        <article><h3>Data &amp; decisions</h3><p>Analytics engineering · Experiment design · Funnel analysis · Financial analysis · Executive communication</p></article>
+
+      <div class="about-grid">
+        <figure class="about-portrait">
+          <img src="/images/kimberly-portrait.jpg" alt="Kimberly Huang" width="1080" height="1440" loading="lazy" />
+          <figcaption>Kimberly (Qijing) Huang · New York</figcaption>
+        </figure>
+        <div class="about-copy">
+          <p class="about-lede">My work sits between applied AI, data engineering and product design. I care about where a system should stop—not only what it can automate.</p>
+          <p>That means designing explicit review boundaries, separating model output from observable evidence and building interfaces that make uncertainty legible.</p>
+          <div class="education-stack">
+            <article><span>2025—26</span><div><h3>Columbia University</h3><p>MS Applied Analytics · GPA 4.0 · Expected Dec 2026</p></div></article>
+            <article><span>Undergraduate</span><div><h3>University of Dundee</h3><p>BSc Applied Finance · Top 1% · ACCA certified</p></div></article>
+          </div>
+        </div>
+      </div>
+
+      <div class="capability-grid" aria-label="Core capabilities">
+        <article><span>01</span><h3>Applied AI systems</h3><p>Multimodal extraction, agent orchestration, evaluation, retrieval, guardrails and human review.</p></article>
+        <article><span>02</span><h3>Product engineering</h3><p>Python, TypeScript, SQL, Next.js, FastAPI, APIs, GitHub Actions and Vercel.</p></article>
+        <article><span>03</span><h3>Data &amp; decisions</h3><p>Analytics engineering, experimentation, funnel analysis, financial analysis and executive communication.</p></article>
       </div>
     </section>
   </main>
