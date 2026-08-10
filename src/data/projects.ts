@@ -27,7 +27,6 @@ export const featuredProjects: Project[] = [
       "A deployed workflow with synthetic test scenarios, inspectable exceptions and an explicit approval boundary before export.",
     tags: ["Next.js", "TypeScript", "Vision AI", "Validation"],
     preview: "crewverify",
-    demo: "https://crewverify.vercel.app",
     repo: "https://github.com/Kimberly-Huang/crewverify",
   },
   {

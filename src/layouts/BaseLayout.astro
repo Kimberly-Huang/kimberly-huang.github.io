@@ -75,7 +75,6 @@ const structuredData = {
     <a class="skip-link" href="#main">Skip to content</a>
     <slot />
     <script>
-      const header = document.querySelector("[data-header]");
       const toggle = document.querySelector("[data-menu-toggle]");
       const menu = document.querySelector("[data-menu]");
 
@@ -92,9 +91,39 @@ const structuredData = {
         });
       });
 
-      const updateHeader = () => header?.toggleAttribute("data-scrolled", window.scrollY > 24);
-      updateHeader();
-      window.addEventListener("scroll", updateHeader, { passive: true });
+      const navigationLinks = Array.from(document.querySelectorAll<HTMLElement>("[data-nav]"));
+      const observedSections = navigationLinks
+        .map((link) => document.getElementById(link.dataset.nav ?? ""))
+        .filter((section): section is HTMLElement => Boolean(section));
+
+      const setActiveSection = (id: string) => {
+        navigationLinks.forEach((link) => {
+          const active = link.dataset.nav === id;
+          link.toggleAttribute("data-active", active);
+          if (active) link.setAttribute("aria-current", "location");
+          else link.removeAttribute("aria-current");
+        });
+      };
+
+      if (observedSections.length) {
+        let activeFrame = 0;
+        const updateActiveSection = () => {
+          const readingLine = window.scrollY + Math.min(window.innerHeight * 0.3, 220);
+          const activeSection = observedSections.reduce(
+            (current, section) => section.offsetTop <= readingLine ? section : current,
+            observedSections[0],
+          );
+          setActiveSection(activeSection.id);
+          activeFrame = 0;
+        };
+        const requestActiveUpdate = () => {
+          if (activeFrame) return;
+          activeFrame = window.requestAnimationFrame(updateActiveSection);
+        };
+        updateActiveSection();
+        window.addEventListener("scroll", requestActiveUpdate, { passive: true });
+        window.addEventListener("resize", requestActiveUpdate, { passive: true });
+      }
     </script>
   </body>
 </html>

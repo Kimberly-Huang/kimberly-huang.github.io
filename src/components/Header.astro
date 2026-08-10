@@ -1,23 +1,39 @@
 <header class="site-header" data-header>
-  <a class="brand" href="/" aria-label="Kimberly Huang home">
-    <span class="brand-mark">KH</span>
-    <span class="brand-name">Kimberly Huang</span>
-  </a>
-  <button
-    class="menu-toggle"
-    type="button"
-    aria-expanded="false"
-    aria-controls="site-menu"
-    data-menu-toggle
-  >
-    <span>Menu</span>
-    <span class="menu-lines" aria-hidden="true"></span>
-  </button>
+  <div class="sidebar-profile">
+    <a class="profile-portrait" href="/" aria-label="Kimberly Huang home">
+      <img src="/images/kimberly-portrait.jpg" alt="" width="1080" height="1440" />
+    </a>
+    <a class="sidebar-name" href="/">Kimberly Huang</a>
+    <p class="sidebar-role">Applied AI &amp; Data Engineer</p>
+    <p class="sidebar-status"><span aria-hidden="true"></span>Graduating December 2026</p>
+    <p class="sidebar-location">New York, NY</p>
+  </div>
+
+  <div class="mobile-brand">
+    <a href="/" aria-label="Kimberly Huang home"><span>KH</span>Kimberly Huang</a>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-menu"
+      data-menu-toggle
+    >
+      Menu
+    </button>
+  </div>
+
   <nav id="site-menu" class="site-menu" aria-label="Primary navigation" data-menu>
-    <a href="/#experience">Experience</a>
-    <a href="/#work">Selected work</a>
-    <a href="/#education">Education</a>
-    <a href="/#about">About</a>
-    <a class="nav-cta" href="/#contact">Contact</a>
+    <a href="/#about" data-nav="about"><span aria-hidden="true"></span>About</a>
+    <a href="/#experience" data-nav="experience"><span aria-hidden="true"></span>Experience</a>
+    <a href="/#work" data-nav="work"><span aria-hidden="true"></span>Projects</a>
+    <a href="/#education" data-nav="education"><span aria-hidden="true"></span>Education</a>
+    <a href="/#skills" data-nav="skills"><span aria-hidden="true"></span>Skills</a>
+    <a href="/#contact" data-nav="contact"><span aria-hidden="true"></span>Contact</a>
   </nav>
+
+  <div class="sidebar-links" aria-label="Profile links">
+    <a href="mailto:huang0818hqj@outlook.com">Email</a>
+    <a href="https://www.linkedin.com/in/qijinghuang/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+    <a href="https://github.com/Kimberly-Huang" target="_blank" rel="noreferrer">GitHub ↗</a>
+  </div>
 </header>

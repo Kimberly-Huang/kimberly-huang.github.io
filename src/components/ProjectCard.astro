@@ -14,7 +14,7 @@ const { project, compact = false } = Astro.props;
   <ProjectPreview kind={project.preview} />
   <div class="project-copy">
     <div class="project-kicker">
-      <span>{project.number}</span>
+      <span class="project-number">{project.number}</span>
       <span>{project.eyebrow}</span>
       {project.award && <strong>{project.award}</strong>}
     </div>
@@ -31,9 +31,9 @@ const { project, compact = false } = Astro.props;
         {project.tags.map((tag) => <li>{tag}</li>)}
       </ul>
       <div class="project-links">
-        {!compact && <a class="case-link" href={`/work/${project.slug}`}>Case study <span aria-hidden="true">→</span></a>}
-        {project.demo && <a href={project.demo} target="_blank" rel="noreferrer">Live demo <span aria-hidden="true">↗</span></a>}
-        {project.repo && <a href={project.repo} target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>}
+        {!compact && <a class="project-action project-action-primary" href={`/work/${project.slug}`}>Read case study <span aria-hidden="true">→</span></a>}
+        {project.demo && <a class="project-action" href={project.demo} target="_blank" rel="noreferrer">Live product <span aria-hidden="true">↗</span></a>}
+        {project.repo && <a class="project-action" href={project.repo} target="_blank" rel="noreferrer">Source code <span aria-hidden="true">↗</span></a>}
       </div>
     </div>
   </div>

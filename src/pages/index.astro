@@ -8,100 +8,85 @@ import { additionalProjects, featuredProjects } from "../data/projects";
 
 <BaseLayout>
   <Header />
-  <main id="main">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow">Applied AI &amp; Data Engineer</p>
-        <h1 id="hero-title">Kimberly Huang</h1>
-        <p class="hero-role">I build reliable AI and data products for operational teams.</p>
-        <p class="hero-lede">
-          My work combines product judgment, data engineering and human-centered controls
-          to move AI from a promising prototype into a system people can review and use.
-        </p>
-        <p class="hero-meta">
-          AI &amp; Data Engineer Intern at Deutsche Windtechnik<br />
-          Columbia University · MS Applied Analytics · December 2026
-        </p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#experience">View experience</a>
-          <a class="text-link" href="mailto:huang0818hqj@outlook.com">Email</a>
-          <a class="text-link" href="https://www.linkedin.com/in/qijinghuang/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
-        </div>
+  <main id="main" class="home-main">
+    <section class="profile-section" id="about" aria-labelledby="profile-title">
+      <p class="section-label">About</p>
+      <h1 id="profile-title">Kimberly Huang</h1>
+      <p class="profile-role">Applied AI &amp; Data Engineer</p>
+      <p class="profile-lede">
+        I build reliable AI and data products for operational teams—combining product
+        judgment, data engineering and human-centered controls.
+      </p>
+      <p class="profile-summary">
+        Currently an AI &amp; Data Engineer Intern at Deutsche Windtechnik and completing an
+        MS in Applied Analytics at Columbia University. I am interested in full-time roles
+        beginning after my December 2026 graduation.
+      </p>
+      <div class="profile-actions">
+        <a class="button button-primary" href="#work">View selected projects</a>
+        <a class="button button-secondary" href="mailto:huang0818hqj@outlook.com">Email me</a>
       </div>
-      <figure class="portrait-frame">
-        <img src="/images/kimberly-portrait.jpg" alt="Kimberly Huang at Columbia University" width="1080" height="1440" />
-        <figcaption><span>Kimberly (Qijing) Huang</span><span>New York</span></figcaption>
-      </figure>
+      <dl class="profile-facts">
+        <div><dt>Current</dt><dd>AI &amp; Data Engineer Intern</dd></div>
+        <div><dt>Education</dt><dd>Columbia University · MS</dd></div>
+        <div><dt>Location</dt><dd>New York, NY</dd></div>
+      </dl>
     </section>
 
-    <section class="section experience-section" id="experience" aria-labelledby="experience-title">
-      <div class="section-heading">
-        <p class="section-index">Experience</p>
-        <div>
-          <h2 id="experience-title">Professional experience</h2>
-          <p>Applied AI delivery, product analytics and decision support across enterprise environments.</p>
-        </div>
+    <section class="content-section" id="experience" aria-labelledby="experience-title">
+      <div class="section-header">
+        <div><p class="section-label">Experience</p><h2 id="experience-title">Professional experience</h2></div>
+        <p>Enterprise AI delivery, product analytics and decision support.</p>
       </div>
-      <div class="timeline">
-        <article>
-          <div class="timeline-meta"><span>Jun 2026 — Present</span><span>Houston / Global</span></div>
-          <div>
-            <p class="company">Deutsche Windtechnik</p>
-            <h3>AI &amp; Data Engineer Intern</h3>
-            <p>
-              Evaluate and build AI-assisted workflows for enterprise operations, with emphasis
-              on data access, review controls, privacy and deployment readiness. Partner with
-              stakeholders to translate ambiguous requests into bounded, testable products.
-            </p>
+      <div class="experience-list">
+        <article class="experience-card">
+          <div class="experience-heading">
+            <div><h3>AI &amp; Data Engineer Intern</h3><p>Deutsche Windtechnik</p></div>
+            <p>Jun 2026 — Present<br /><span>Houston / Global</span></p>
           </div>
+          <ul>
+            <li>Evaluate and build AI-assisted workflows for enterprise operations.</li>
+            <li>Translate ambiguous stakeholder requests into bounded, testable products with explicit privacy and review controls.</li>
+          </ul>
         </article>
-        <article>
-          <div class="timeline-meta"><span>Jul 2024 — Jun 2025</span><span>Shenzhen</span></div>
-          <div>
-            <p class="company">Temu</p>
-            <h3>Data Analyst</h3>
-            <p>
-              Analyzed acquisition, activation, retention and monetization across more than 20
-              markets; automated recurring reporting and translated funnel behavior into clear
-              recommendations for growth teams.
-            </p>
+        <article class="experience-card">
+          <div class="experience-heading">
+            <div><h3>Data Analyst</h3><p>Temu</p></div>
+            <p>Jul 2024 — Jun 2025<br /><span>Shenzhen</span></p>
           </div>
+          <ul>
+            <li>Analyzed acquisition, activation, retention and monetization across more than 20 markets.</li>
+            <li>Automated recurring reporting and translated funnel behavior into recommendations for growth teams.</li>
+          </ul>
         </article>
-        <article>
-          <div class="timeline-meta"><span>2023</span><span>Beijing / Manchester</span></div>
-          <div>
-            <p class="company">Securities research &amp; finance</p>
-            <h3>Research and Finance Internships</h3>
-            <p>
-              Developed an analytical foundation across equity research, macroeconomic analysis,
-              financial reporting and data-backed executive communication.
-            </p>
+        <article class="experience-card">
+          <div class="experience-heading">
+            <div><h3>Research &amp; Finance Internships</h3><p>Securities research and corporate finance</p></div>
+            <p>2023<br /><span>Beijing / Manchester</span></p>
           </div>
+          <ul>
+            <li>Worked across equity research, macroeconomic analysis and financial reporting.</li>
+            <li>Built a foundation in evidence-based analysis and executive communication.</li>
+          </ul>
         </article>
       </div>
       <aside class="confidential-note" aria-label="Confidential work policy">
-        <p class="section-index">Confidential work</p>
+        <p class="section-label">Confidential work</p>
         <div>
-          <h3>Internal work is presented at the level of responsibility and judgment.</h3>
+          <h3>Professional judgment can be shown without exposing internal material.</h3>
           <p>
             Company data, protected interfaces and internal operating details are not reproduced.
-            Public descriptions focus on the problem class, my role, system boundaries and the
-            decisions I was accountable for.
+            I describe the problem class, my responsibility, system boundaries and decisions—only
+            at a level appropriate for public review.
           </p>
         </div>
       </aside>
     </section>
 
-    <section class="section work-section" id="work" aria-labelledby="work-title">
-      <div class="section-heading">
-        <p class="section-index">Selected work</p>
-        <div>
-          <h2 id="work-title">Public projects with working proof</h2>
-          <p>
-            These projects can be reviewed through a live product, source code or a detailed
-            case study. Each one shows a different part of how I frame and ship AI systems.
-          </p>
-        </div>
+    <section class="content-section" id="work" aria-labelledby="work-title">
+      <div class="section-header">
+        <div><p class="section-label">Projects <span>({featuredProjects.length})</span></p><h2 id="work-title">Selected public work</h2></div>
+        <p>Each project includes a readable overview, a case study and public proof where available.</p>
       </div>
       <div class="featured-grid">
         {featuredProjects.map((project) => <ProjectCard project={project} />)}
@@ -110,7 +95,7 @@ import { additionalProjects, featuredProjects } from "../data/projects";
       <div class="additional-work">
         <div class="subsection-heading">
           <h3>Additional projects</h3>
-          <p>Focused builds across productivity, learning and software intelligence.</p>
+          <p>Focused builds across productivity and software intelligence.</p>
         </div>
         <div class="lab-grid">
           {additionalProjects.map((project) => <ProjectCard project={project} compact />)}
@@ -118,41 +103,32 @@ import { additionalProjects, featuredProjects } from "../data/projects";
       </div>
     </section>
 
-    <section class="section education-section" id="education" aria-labelledby="education-title">
-      <div class="section-heading">
-        <p class="section-index">Education</p>
-        <div>
-          <h2 id="education-title">Education &amp; credentials</h2>
-          <p>A quantitative foundation across analytics, finance and applied machine learning.</p>
-        </div>
+    <section class="content-section" id="education" aria-labelledby="education-title">
+      <div class="section-header">
+        <div><p class="section-label">Education</p><h2 id="education-title">Education &amp; credentials</h2></div>
+        <p>A quantitative foundation across analytics, finance and applied machine learning.</p>
       </div>
       <div class="education-list">
         <article>
-          <p class="education-date">Expected Dec 2026</p>
           <div><h3>Columbia University</h3><p>Master of Science in Applied Analytics · GPA 4.0</p></div>
+          <p>Expected Dec 2026</p>
         </article>
         <article>
-          <p class="education-date">Undergraduate</p>
           <div><h3>University of Dundee</h3><p>BSc Applied Finance · Top 1% · ACCA certified</p></div>
+          <p>Undergraduate</p>
         </article>
       </div>
     </section>
 
-    <section class="section about-section" id="about" aria-labelledby="about-title">
-      <div class="section-heading">
-        <p class="section-index">About</p>
-        <div>
-          <h2 id="about-title">Analytical depth, practical delivery</h2>
-          <p>
-            I work best at the intersection of AI engineering, data analysis and product
-            decision-making. My finance background makes me rigorous about evidence and risk;
-            my engineering work keeps the focus on systems that hold up in real workflows.
-          </p>
-          <p>
-            I am completing my master’s degree at Columbia University and am seeking full-time
-            roles in applied AI, data engineering and AI solutions beginning after graduation.
-          </p>
-        </div>
+    <section class="content-section" id="skills" aria-labelledby="skills-title">
+      <div class="section-header">
+        <div><p class="section-label">Skills</p><h2 id="skills-title">Working toolkit</h2></div>
+        <p>Capabilities I use to frame, build and evaluate data-intensive products.</p>
+      </div>
+      <div class="skill-groups">
+        <article><h3>AI systems</h3><p>LLM orchestration · Multimodal extraction · Evaluation · RAG · Human review · Guardrails</p></article>
+        <article><h3>Engineering</h3><p>Python · TypeScript · SQL · Next.js · FastAPI · APIs · GitHub Actions · Vercel</p></article>
+        <article><h3>Data &amp; decisions</h3><p>Analytics engineering · Experiment design · Funnel analysis · Financial analysis · Executive communication</p></article>
       </div>
     </section>
   </main>
