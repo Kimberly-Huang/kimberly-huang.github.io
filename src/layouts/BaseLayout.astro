@@ -10,6 +10,33 @@ const {
   title = "Kimberly Huang — Applied AI & Data Engineer",
   description = "Applied AI and data engineer building trustworthy systems for real operations.",
 } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
+const socialImage = new URL("/og.png", Astro.site ?? Astro.url.origin);
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Kimberly Huang",
+  alternateName: "Qijing Huang",
+  url: new URL("/", Astro.site ?? Astro.url.origin).toString(),
+  image: new URL("/images/kimberly-portrait.jpg", Astro.site ?? Astro.url.origin).toString(),
+  jobTitle: "Applied AI & Data Engineer",
+  sameAs: [
+    "https://www.linkedin.com/in/qijinghuang/",
+    "https://github.com/Kimberly-Huang",
+  ],
+  alumniOf: [
+    { "@type": "CollegeOrUniversity", name: "Columbia University" },
+    { "@type": "CollegeOrUniversity", name: "University of Dundee" },
+  ],
+  knowsAbout: [
+    "Applied artificial intelligence",
+    "Data engineering",
+    "Analytics engineering",
+    "Human-in-the-loop systems",
+    "Enterprise workflow automation",
+  ],
+};
 ---
 
 <!doctype html>
@@ -20,6 +47,21 @@ const {
     <meta name="description" content={description} />
     <meta name="theme-color" content="#f3efe7" />
     <meta name="color-scheme" content="light" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Kimberly Huang" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Kimberly Huang — Applied AI & Data Engineer" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -27,6 +69,7 @@ const {
       rel="stylesheet"
     />
     <title>{title}</title>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
