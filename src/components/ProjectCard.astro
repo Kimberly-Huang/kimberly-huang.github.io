@@ -32,6 +32,7 @@ const { project, compact = false } = Astro.props;
         {project.tags.map((tag) => <li>{tag}</li>)}
       </ul>
       <div class="project-links">
+        {!compact && <a class="case-link" href={`/work/${project.slug}`}>Case study <span aria-hidden="true">→</span></a>}
         {project.demo && <a href={project.demo} target="_blank" rel="noreferrer">Live demo <span aria-hidden="true">↗</span></a>}
         {project.repo && <a href={project.repo} target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>}
       </div>

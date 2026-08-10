@@ -1,0 +1,78 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import ProjectPreview from "../../components/ProjectPreview.astro";
+import CaseStudyFlow from "../../components/CaseStudyFlow.astro";
+import { featuredProjects } from "../../data/projects";
+import { caseStudies } from "../../data/caseStudies";
+
+export function getStaticPaths() {
+  return featuredProjects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project, study: caseStudies[project.slug] },
+  }));
+}
+
+const { project, study } = Astro.props;
+---
+
+<BaseLayout
+  title={`${project.title} — Kimberly Huang`}
+  description={`${project.summary} A case study by Kimberly Huang.`}
+>
+  <Header />
+  <main id="main" class="case-main">
+    <section class="case-hero">
+      <div class="case-hero-copy">
+        <a class="back-link" href="/#work">← Selected work</a>
+        <p class="eyebrow">{project.eyebrow}</p>
+        <h1>{project.title}</h1>
+        <p class="case-thesis">{study.thesis}</p>
+        <div class="case-role"><span>My role</span><p>{study.role}</p></div>
+        <div class="project-links case-hero-links">
+          {project.demo && <a href={project.demo} target="_blank" rel="noreferrer">Live demo ↗</a>}
+          {project.repo && <a href={project.repo} target="_blank" rel="noreferrer">GitHub ↗</a>}
+        </div>
+      </div>
+      <ProjectPreview kind={project.preview} />
+    </section>
+
+    <section class="case-context">
+      <p class="section-index">Context</p>
+      <p>{study.context}</p>
+    </section>
+
+    <section class="case-metrics" aria-label="Case study results">
+      {study.metrics.map((metric) => <div><strong>{metric.value}</strong><span>{metric.label}</span></div>)}
+    </section>
+
+    {study.disclosure && <aside class="disclosure"><strong>Public case-study boundary</strong><p>{study.disclosure}</p></aside>}
+
+    <section class="case-process" aria-labelledby="process-title">
+      <div class="case-section-heading">
+        <p class="section-index">Workflow</p>
+        <h2 id="process-title">How the system moves from problem to proof.</h2>
+      </div>
+      <CaseStudyFlow slug={study.slug} steps={study.flow} />
+    </section>
+
+    {study.sections.map((section, index) => (
+      <section class="case-narrative">
+        <div><p class="section-index">{String(index + 1).padStart(2, "0")} / {section.eyebrow}</p><h2>{section.title}</h2></div>
+        <div>{section.body.map((paragraph) => <p>{paragraph}</p>)}</div>
+      </section>
+    ))}
+
+    <section class="case-principles">
+      <p class="section-index">Design principles</p>
+      <ol>{study.principles.map((principle) => <li>{principle}</li>)}</ol>
+    </section>
+
+    <section class="next-case">
+      <p class="section-index">Continue exploring</p>
+      <a href="/#work">View all selected work <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
