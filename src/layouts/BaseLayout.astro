@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-  title = "Kimberly Huang — Applied AI Engineer",
-  description = "Kimberly Huang builds applied AI systems that people can inspect, trust and use.",
+  title = "Kimberly Huang — Applied AI & Data Engineer",
+  description = "Kimberly Huang builds applied AI products for complex operational work.",
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
@@ -45,7 +45,7 @@ const structuredData = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#f3f1ec" />
+    <meta name="theme-color" content="#f2ede4" />
     <meta name="color-scheme" content="light" />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.png" type="image/png" />
@@ -65,7 +65,7 @@ const structuredData = {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
       rel="stylesheet"
     />
     <title>{title}</title>
@@ -92,6 +92,7 @@ const structuredData = {
       });
 
       const navigationLinks = Array.from(document.querySelectorAll<HTMLElement>("[data-nav]"));
+      const scrollProgress = document.querySelector<HTMLElement>("[data-scroll-progress]");
       const observedSections = navigationLinks
         .map((link) => document.getElementById(link.dataset.nav ?? ""))
         .filter((section): section is HTMLElement => Boolean(section));
@@ -105,12 +106,28 @@ const structuredData = {
         });
       };
 
+      let progressFrame = 0;
+      const updateScrollProgress = () => {
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
+        if (scrollProgress) scrollProgress.style.transform = `scaleY(${progress})`;
+        progressFrame = 0;
+      };
+      const requestProgressUpdate = () => {
+        if (progressFrame) return;
+        progressFrame = window.requestAnimationFrame(updateScrollProgress);
+      };
+
+      updateScrollProgress();
+      window.addEventListener("scroll", requestProgressUpdate, { passive: true });
+      window.addEventListener("resize", requestProgressUpdate, { passive: true });
+
       if (window.location.pathname.startsWith("/work/")) {
         setActiveSection("work");
       } else if (observedSections.length) {
         let activeFrame = 0;
         const updateActiveSection = () => {
-          const readingLine = window.scrollY + Math.min(window.innerHeight * 0.3, 220);
+          const readingLine = window.scrollY + Math.min(window.innerHeight * 0.45, 420);
           const activeSection = observedSections.reduce(
             (current, section) => section.offsetTop <= readingLine ? section : current,
             observedSections[0],

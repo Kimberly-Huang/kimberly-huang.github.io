@@ -1,9 +1,16 @@
 <header class="site-header" data-header>
   <div class="header-inner">
-    <a class="site-identity" href="/" aria-label="Kimberly Huang home">
-      <span class="identity-mark" aria-hidden="true">KH</span>
-      <span class="identity-name">Kimberly Huang</span>
-    </a>
+    <div class="sidebar-profile">
+      <a class="sidebar-portrait" href="/" aria-label="Kimberly Huang home">
+        <img src="/images/kimberly-portrait.jpg" alt="" width="1800" height="2400" />
+      </a>
+      <div class="sidebar-identity">
+        <a class="sidebar-name" href="/">Kimberly Huang</a>
+        <p class="sidebar-role">Applied AI &amp; Data Engineer</p>
+        <p class="sidebar-intro">I turn complex operational problems into AI products people can inspect and use.</p>
+        <p class="sidebar-status"><span aria-hidden="true"></span>Graduating December 2026</p>
+      </div>
+    </div>
 
     <button
       class="menu-toggle"
@@ -16,12 +23,18 @@
     </button>
 
     <nav id="site-menu" class="site-menu" aria-label="Primary navigation" data-menu>
-      <a href="/#work" data-nav="work">Work</a>
-      <a href="/#experience" data-nav="experience">Experience</a>
-      <a href="/#about" data-nav="about">About</a>
-      <a href="/#contact" data-nav="contact">Contact</a>
+      <a href="/#work" data-nav="work"><span>01</span>Work</a>
+      <a href="/#experience" data-nav="experience"><span>02</span>Experience</a>
+      <a href="/#about" data-nav="about"><span>03</span>About</a>
+      <a href="/#contact" data-nav="contact"><span>04</span>Contact</a>
     </nav>
 
-    <a class="header-contact" href="mailto:huang0818hqj@outlook.com">Let’s talk <span aria-hidden="true">↗</span></a>
+    <div class="sidebar-contact" aria-label="Profile links">
+      <a href="mailto:huang0818hqj@outlook.com">Email <span aria-hidden="true">↗</span></a>
+      <a href="https://www.linkedin.com/in/qijinghuang/" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+      <a href="https://github.com/Kimberly-Huang" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+    </div>
+
+    <div class="scroll-progress" aria-hidden="true"><span data-scroll-progress></span></div>
   </div>
 </header>
