@@ -5,6 +5,7 @@ import ProjectCard from "../components/ProjectCard.astro";
 import ProjectPreview from "../components/ProjectPreview.astro";
 import Footer from "../components/Footer.astro";
 import { additionalProjects, featuredProjects } from "../data/projects";
+import { site } from "../data/site";
 
 const featuredBuild = featuredProjects[0];
 ---
@@ -22,9 +23,10 @@ const featuredBuild = featuredProjects[0];
           </p>
           <div class="hero-actions">
             <a class="button button-primary" href="#work">View selected work <span aria-hidden="true">↓</span></a>
-            <a class="button button-secondary" href="mailto:huang0818hqj@outlook.com">Start a conversation <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary" href={`mailto:${site.email}`}>Start a conversation <span aria-hidden="true">↗</span></a>
+            <a class="button-quiet" href={site.resume}>Résumé (PDF) <span aria-hidden="true">↓</span></a>
           </div>
-          <p class="hero-note">Applied AI &amp; Data Engineer · MS Applied Analytics at Columbia University</p>
+          <p class="hero-note">Python · TypeScript · SQL · LLM APIs · Next.js · PostgreSQL &middot; MS Applied Analytics at Columbia University</p>
         </div>
 
         <aside class="hero-feature" aria-label="Featured project">

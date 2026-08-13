@@ -7,6 +7,7 @@ export type CaseStudy = {
   metrics: { value: string; label: string }[];
   flow: { label: string; title: string; body: string; evidence: string }[];
   sections: { eyebrow: string; title: string; body: string[] }[];
+  gallery: { src: string; alt: string; label: string; caption: string }[];
   principles: string[];
   limitation: string;
 };
@@ -26,10 +27,10 @@ export const caseStudies: Record<string, CaseStudy> = {
       { label: "Current scope", value: "Functional assessment prototype" },
     ],
     metrics: [
-      { value: "3", label: "synthetic failure modes" },
-      { value: "7", label: "inspectable validation rules" },
-      { value: "2", label: "separate approval stages" },
-      { value: "1", label: "end-to-end export path" },
+      { value: "8", label: "inspectable validation rules" },
+      { value: "4", label: "stages from photo to export" },
+      { value: "12", label: "seeded timesheet records" },
+      { value: "3", label: "synthetic failure scenarios" },
     ],
     flow: [
       {
@@ -75,6 +76,29 @@ export const caseStudies: Record<string, CaseStudy> = {
         ],
       },
     ],
+    gallery: [
+      {
+        src: "/images/work/crewverify-timesheets",
+        alt: "CrewVerify timesheet directory listing twelve records across review, foreman and approval states",
+        label: "Timesheet directory",
+        caption:
+          "Every paper sheet is tracked from intake to manager approval. The counters separate what needs a person from what is already cleared for export.",
+      },
+      {
+        src: "/images/work/crewverify-rules",
+        alt: "CrewVerify validation rules page showing WHEN and THEN conditions with block and review severities",
+        label: "The rule engine, in the product",
+        caption:
+          "Each check is visible to the reviewer as a WHEN/THEN pair with its own severity. Routing is decided here, not by how confident the model sounded.",
+      },
+      {
+        src: "/images/work/crewverify-review",
+        alt: "CrewVerify review workspace with a photographed timesheet loaded and the four-stage progress indicator",
+        label: "Review workspace",
+        caption:
+          "The photographed field record stays on screen next to the extracted values, so a reviewer can always check the transcription against the paper.",
+      },
+    ],
     principles: [
       "Transcribe only visible evidence.",
       "Never silently repair the source record.",
@@ -99,9 +123,9 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     metrics: [
       { value: "3rd", label: "place overall" },
-      { value: "7", label: "narrow specialist agents" },
+      { value: "8", label: "specialist steps per signal" },
+      { value: "5", label: "confidence labels on every claim" },
       { value: "4", label: "signal-to-verification stages" },
-      { value: "2", label: "human roles in the loop" },
     ],
     flow: [
       {
@@ -147,6 +171,29 @@ export const caseStudies: Record<string, CaseStudy> = {
         ],
       },
     ],
+    gallery: [
+      {
+        src: "/images/work/ssc-trace",
+        alt: "Supervisor orchestration trace listing eight completed agents with routing reasons and timings",
+        label: "Supervisor trace",
+        caption:
+          "One sentence in, eight specialist steps out. The operator can see which agent ran, why it was routed there and how long it took.",
+      },
+      {
+        src: "/images/work/ssc-confidence",
+        alt: "Confidence ledger labelling each claim Verified, Likely, Inferred or Missing with its basis",
+        label: "Confidence ledger",
+        caption:
+          "Each claim carries its own label and basis. The student’s observation is the only thing marked Verified; everything the model inferred says so.",
+      },
+      {
+        src: "/images/work/ssc-verification",
+        alt: "Verification loop showing a work order closed after the original reporter confirmed the repair",
+        label: "Closing the loop",
+        caption:
+          "A work order only closes when the original reporter confirms reality changed. \u201CStill happening\u201D reopens it and records the false closure.",
+      },
+    ],
     principles: [
       "Ground conclusions before recommending action.",
       "Label uncertainty instead of smoothing it over.",
@@ -170,10 +217,10 @@ export const caseStudies: Record<string, CaseStudy> = {
       { label: "Current scope", value: "3 deployed interactive mini-labs" },
     ],
     metrics: [
-      { value: "3", label: "interactive mini-labs" },
+      { value: "3", label: "interactive mini-labs, deployed" },
+      { value: "72B", label: "parameter model in the coaching route" },
       { value: "3", label: "hand-authored misconception maps" },
-      { value: "1", label: "teacher-ready report" },
-      { value: "24/7", label: "deterministic fallback" },
+      { value: "0", label: "lessons broken when the model is down" },
     ],
     flow: [
       {
@@ -217,6 +264,29 @@ export const caseStudies: Record<string, CaseStudy> = {
           "Each lab includes a bounded offline path so the activity remains useful when an external model is unavailable.",
           "AI improves the specificity of the coaching prompt; it is not allowed to become the only source of instructional value.",
         ],
+      },
+    ],
+    gallery: [
+      {
+        src: "/images/work/lablens-socratic",
+        alt: "LabLens replying to a misconception with a water-pipe analogy question instead of the answer",
+        label: "A real Socratic exchange",
+        caption:
+          "The learner says current gets used up by R1. LabLens does not correct them \u2014 it asks about water flowing through two connected pipes, and tags the misconception it detected.",
+      },
+      {
+        src: "/images/work/lablens-lab",
+        alt: "LabLens circuits mini-lab before submission, with the problem statement and reasoning composer",
+        label: "Predict before you measure",
+        caption:
+          "Every lab asks for a commitment and the reasoning behind it before the experiment runs. That answer is the diagnostic signal.",
+      },
+      {
+        src: "/images/work/lablens-architecture",
+        alt: "LabLens technology page showing the request path from student input through the API route to the model",
+        label: "The route, documented in-product",
+        caption:
+          "The technology page states the actual path \u2014 student input, Next.js route, Featherless, Qwen2.5-72B \u2014 and the structured JSON it returns.",
       },
     ],
     principles: [

@@ -594,6 +594,7 @@ a {
   min-width: 0;
   overflow: hidden;
   background: var(--surface-soft);
+  text-decoration: none;
 }
 
 .project-card:not(.project-card-primary) .project-preview {
@@ -2585,6 +2586,208 @@ a {
 
   .next-case a {
     font-size: clamp(2.8rem, 13vw, 4rem);
+  }
+}
+
+.button-quiet {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.1rem;
+  border-bottom: 1px solid rgba(16, 21, 18, 0.22);
+  color: rgba(16, 21, 18, 0.72);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: border-color 160ms ease, color 160ms ease;
+}
+
+.button-quiet:hover,
+.button-quiet:focus-visible {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+/* Résumé entry point: shown in the header bar on desktop, folded into the
+   dropdown once .header-actions is hidden at 860px. */
+
+.menu-resume {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .menu-resume {
+    display: block;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Real product screenshots
+   Captured from the running applications, framed as app windows.
+   ───────────────────────────────────────────────────────────── */
+
+.preview-shot,
+.preview-shot * {
+  text-decoration: none;
+}
+
+.preview-shot {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(0.9rem, 2.2vw, 1.7rem);
+  background: linear-gradient(158deg, #f4f3ee 0%, #e4e5dd 100%);
+}
+
+.preview-shot .shot-frame {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(16, 21, 18, 0.16);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 20px 44px rgba(25, 35, 30, 0.16);
+}
+
+.shot-bar {
+  display: grid;
+  min-height: 38px;
+  align-items: center;
+  gap: 0.9rem;
+  grid-template-columns: 1fr auto 1fr;
+  padding: 0 0.8rem;
+  border-bottom: 1px solid rgba(16, 21, 18, 0.09);
+  background: #f7f7f4;
+  color: #6e746f;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.shot-bar span {
+  justify-self: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shot-bar b {
+  justify-self: end;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(23, 63, 49, 0.09);
+  color: var(--forest, #17402f);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.shot-dots {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.shot-dots i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(16, 21, 18, 0.16);
+}
+
+.preview-shot picture {
+  display: block;
+  min-height: 0;
+  flex: 1;
+}
+
+.preview-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left top;
+}
+
+.shot-note {
+  margin: 0.75rem 0 0;
+  color: rgba(16, 21, 18, 0.55);
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hero-feature .preview-shot {
+  padding: 0;
+  background: none;
+}
+
+.hero-feature .preview-shot .shot-note {
+  display: none;
+}
+
+/* Case study screenshot gallery */
+
+.case-gallery {
+  display: grid;
+  gap: clamp(1.4rem, 3vw, 2.4rem);
+  padding: clamp(2rem, 5vw, 3.4rem) 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.case-gallery figure:first-child {
+  grid-column: 1 / -1;
+}
+
+.case-gallery figure:first-child figcaption {
+  max-width: 62ch;
+}
+
+.case-gallery figure {
+  display: flex;
+  margin: 0;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.case-gallery img {
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(16, 21, 18, 0.16);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 16px 34px rgba(25, 35, 30, 0.12);
+}
+
+.case-gallery figcaption {
+  color: rgba(16, 21, 18, 0.62);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.case-gallery figcaption strong {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 720px) {
+  .case-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .preview-shot img {
+    object-position: left top;
+  }
+
+  .shot-bar span {
+    display: none;
   }
 }
 

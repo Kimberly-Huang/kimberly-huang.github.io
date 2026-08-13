@@ -12,7 +12,7 @@ const {
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
-const socialImage = new URL("/og.png", Astro.site ?? Astro.url.origin);
+const socialImage = new URL("/og.jpg", Astro.site ?? Astro.url.origin);
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -55,6 +55,7 @@ const structuredData = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={socialImage} />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Kimberly Huang — Applied AI & Data Engineer" />
@@ -63,6 +64,7 @@ const structuredData = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImage} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap"
@@ -158,5 +160,6 @@ const structuredData = {
         window.addEventListener("resize", requestActiveUpdate, { passive: true });
       }
     </script>
+    <script is:inline defer src="/_vercel/insights/script.js"></script>
   </body>
 </html>

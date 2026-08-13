@@ -1,3 +1,7 @@
+---
+import { site } from "../data/site";
+---
+
 <footer class="site-footer" id="contact">
   <div class="footer-shell">
     <div class="footer-primary">
@@ -6,14 +10,15 @@
     </div>
     <div class="footer-contact">
       <p>Graduating in December 2026 and looking for full-time roles beginning in 2027 across applied AI, AI product and data engineering.</p>
-      <a class="footer-email" href="mailto:huang0818hqj@outlook.com">huang0818hqj@outlook.com <span aria-hidden="true">↗</span></a>
+      <a class="footer-email" href={`mailto:${site.email}`}>{site.email} <span aria-hidden="true">↗</span></a>
       <div class="footer-links">
-        <a href="https://www.linkedin.com/in/qijinghuang/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
-        <a href="https://github.com/Kimberly-Huang" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href={site.resume}>Résumé (PDF) ↓</a>
+        <a href={site.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>
+        <a href={site.github} target="_blank" rel="noreferrer">GitHub ↗</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Kimberly Huang</span>
+      <span>© 2026 {site.name}</span>
       <span>New York · Applied AI · Product Engineering · Data</span>
     </div>
   </div>

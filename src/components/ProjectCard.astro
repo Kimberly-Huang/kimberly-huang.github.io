@@ -48,7 +48,7 @@ const { project, compact = false } = Astro.props;
         </ul>
         <div class="project-links">
           <a class="project-action project-action-primary" href={`/work/${project.slug}`}>Read case study <span aria-hidden="true">→</span></a>
-          {project.demo && <a class="project-action" href={project.demo} target="_blank" rel="noreferrer">Live product <span aria-hidden="true">↗</span></a>}
+          {project.demo && <a class="project-action" href={project.demo} target="_blank" rel="noreferrer">{project.demoLabel ?? "Live product"} <span aria-hidden="true">↗</span></a>}
           {project.video && <a class="project-action" href={project.video} target="_blank" rel="noreferrer">Demo video <span aria-hidden="true">↗</span></a>}
           {project.repo && <a class="project-action project-action-quiet" href={project.repo} target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>}
         </div>

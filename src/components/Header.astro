@@ -1,10 +1,14 @@
+---
+import { site } from "../data/site";
+---
+
 <header class="site-header" data-header>
   <div class="header-shell">
-    <a class="brand" href="/" aria-label="Kimberly Huang home">
+    <a class="brand" href="/" aria-label={`${site.name} home`}>
       <span class="brand-mark" aria-hidden="true">KH</span>
       <span class="brand-copy">
-        <strong>Kimberly Huang</strong>
-        <small>Applied AI &amp; Data Engineer</small>
+        <strong>{site.name}</strong>
+        <small>{site.role}</small>
       </span>
     </a>
 
@@ -23,12 +27,14 @@
       <a href="/#experience" data-nav="experience">Experience</a>
       <a href="/#about" data-nav="about">About</a>
       <a href="/#contact" data-nav="contact">Contact</a>
+      <a class="menu-resume" href={site.resume}>Résumé <span aria-hidden="true">↓</span></a>
     </nav>
 
     <div class="header-actions">
-      <span class="availability"><i aria-hidden="true"></i>Open to 2027 roles</span>
-      <a class="header-link" href="https://www.linkedin.com/in/qijinghuang/" target="_blank" rel="noreferrer">LinkedIn</a>
-      <a class="header-cta" href="mailto:huang0818hqj@outlook.com">Let’s talk <span aria-hidden="true">↗</span></a>
+      <span class="availability"><i aria-hidden="true"></i>{site.availability}</span>
+      <a class="header-link" href={site.resume}>Résumé <span aria-hidden="true">↓</span></a>
+      <a class="header-link" href={site.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="header-cta" href={`mailto:${site.email}`}>Let’s talk <span aria-hidden="true">↗</span></a>
     </div>
   </div>
   <div class="scroll-progress" aria-hidden="true"><span data-scroll-progress></span></div>
