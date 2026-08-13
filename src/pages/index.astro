@@ -2,53 +2,71 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import ProjectCard from "../components/ProjectCard.astro";
+import ProjectPreview from "../components/ProjectPreview.astro";
 import Footer from "../components/Footer.astro";
 import { additionalProjects, featuredProjects } from "../data/projects";
+
+const featuredBuild = featuredProjects[0];
 ---
 
 <BaseLayout>
   <Header />
   <main id="main" class="home-main">
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="hero-availability"><span aria-hidden="true"></span>New York · Graduating December 2026</p>
-        <h1 id="hero-title" class="hero-statement">
-          I build AI products for <em>complex operational work.</em>
-        </h1>
-        <p class="hero-summary">
-          An applied AI and data engineer working across multimodal review, agent workflows and data-intensive decisions—without hiding the evidence or the human judgment.
-        </p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#work">Explore selected work <span aria-hidden="true">↓</span></a>
-          <a class="text-action" href="mailto:huang0818hqj@outlook.com">huang0818hqj@outlook.com</a>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span aria-hidden="true"></span>New York · Available for full-time roles in 2027</p>
+          <h1 id="hero-title">Applied AI,<br /><em>engineered for real work.</em></h1>
+          <p class="hero-summary">
+            I build human-in-the-loop products that turn messy inputs into inspectable decisions—combining multimodal AI, deterministic validation and production-minded interfaces.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#work">View selected work <span aria-hidden="true">↓</span></a>
+            <a class="button button-secondary" href="mailto:huang0818hqj@outlook.com">Start a conversation <span aria-hidden="true">↗</span></a>
+          </div>
+          <p class="hero-note">Applied AI &amp; Data Engineer · MS Applied Analytics at Columbia University</p>
         </div>
+
+        <aside class="hero-feature" aria-label="Featured project">
+          <div class="hero-feature-topline">
+            <span>Featured build</span>
+            <span>{featuredBuild.status}</span>
+          </div>
+          <a href={`/work/${featuredBuild.slug}`} class="hero-feature-visual" aria-label={`Explore ${featuredBuild.title}`}>
+            <ProjectPreview kind={featuredBuild.preview} />
+          </a>
+          <div class="hero-feature-copy">
+            <div>
+              <p>{featuredBuild.eyebrow}</p>
+              <h2>{featuredBuild.title}</h2>
+            </div>
+            <a href={`/work/${featuredBuild.slug}`}>Case study <span aria-hidden="true">→</span></a>
+          </div>
+        </aside>
       </div>
 
-      <div class="hero-credentials" aria-label="Professional overview">
-        <p class="credentials-label">At a glance</p>
-        <dl>
-          <div>
-            <dt>Current</dt>
-            <dd><strong>AI &amp; Data Engineer Intern</strong><span>Deutsche Windtechnik · 2026—Now</span></dd>
-          </div>
-          <div>
-            <dt>Previous</dt>
-            <dd><strong>Data Analyst</strong><span>Temu · 2024—2025</span></dd>
-          </div>
-          <div>
-            <dt>Education</dt>
-            <dd><strong>MS Applied Analytics</strong><span>Columbia University · GPA 4.0</span></dd>
-          </div>
-        </dl>
-      </div>
+      <dl class="hero-proof" aria-label="Professional overview">
+        <div>
+          <dt>Now</dt>
+          <dd><strong>AI &amp; Data Engineer Intern</strong><span>Deutsche Windtechnik</span></dd>
+        </div>
+        <div>
+          <dt>Before</dt>
+          <dd><strong>Product analytics across 20+ markets</strong><span>Temu</span></dd>
+        </div>
+        <div>
+          <dt>Education</dt>
+          <dd><strong>MS Applied Analytics · GPA 4.0</strong><span>Columbia University</span></dd>
+        </div>
+      </dl>
     </section>
 
     <section class="work-section" id="work" aria-labelledby="work-title">
-      <div class="section-intro">
-        <p class="section-index">01 / Selected work</p>
+      <div class="section-heading">
+        <p class="section-label">01 / Selected work</p>
         <div>
-          <h2 id="work-title">Products built to survive the real workflow.</h2>
-          <p>Three end-to-end systems showing how I frame risk, design the human boundary and turn emerging AI capabilities into accountable products.</p>
+          <h2 id="work-title">Built, tested and documented.</h2>
+          <p>Three systems showing the product decisions, technical boundaries and evidence behind the interface—not just the finished screen.</p>
         </div>
       </div>
 
@@ -58,8 +76,8 @@ import { additionalProjects, featuredProjects } from "../data/projects";
 
       <div class="more-work" aria-labelledby="more-work-title">
         <div class="more-work-heading">
-          <p class="section-index">In the lab</p>
-          <h3 id="more-work-title">Smaller systems, shipped with intent.</h3>
+          <p class="section-label">Additional builds</p>
+          <h3 id="more-work-title">Smaller systems,<br />clear intent.</h3>
         </div>
         <div class="more-work-list">
           {additionalProjects.map((project) => <ProjectCard project={project} compact />)}
@@ -68,61 +86,83 @@ import { additionalProjects, featuredProjects } from "../data/projects";
     </section>
 
     <section class="experience-section" id="experience" aria-labelledby="experience-title">
-      <div class="section-intro">
-        <p class="section-index">02 / Experience</p>
+      <div class="section-heading">
+        <p class="section-label">02 / Experience</p>
         <div>
-          <h2 id="experience-title">Building inside real constraints.</h2>
-          <p>Experience spanning enterprise AI delivery, product analytics and evidence-based decision support.</p>
+          <h2 id="experience-title">Engineering judgment under real constraints.</h2>
+          <p>Work spanning enterprise AI delivery, product analytics and evidence-based decisions.</p>
         </div>
       </div>
 
       <div class="experience-list">
         <article class="experience-row">
-          <div class="experience-period">2026—Now</div>
-          <div class="experience-role"><h3>AI &amp; Data Engineer Intern</h3><p>Deutsche Windtechnik · Houston / Global</p></div>
-          <p class="experience-description">Evaluate and build AI-assisted workflows for enterprise operations, translating ambiguous stakeholder requests into bounded products with explicit privacy, validation and review controls.</p>
+          <p class="experience-period">2026—Now</p>
+          <div class="experience-role">
+            <h3>AI &amp; Data Engineer Intern</h3>
+            <p>Deutsche Windtechnik · Houston / Global</p>
+          </div>
+          <p class="experience-description">Evaluate and build AI-assisted workflows for enterprise operations, translating ambiguous stakeholder needs into bounded products with explicit privacy, validation and human-review controls.</p>
+          <ul aria-label="Focus areas"><li>Applied AI</li><li>Workflow design</li><li>Enterprise delivery</li></ul>
         </article>
         <article class="experience-row">
-          <div class="experience-period">2024—25</div>
-          <div class="experience-role"><h3>Data Analyst</h3><p>Temu · Shenzhen</p></div>
+          <p class="experience-period">2024—25</p>
+          <div class="experience-role">
+            <h3>Data Analyst</h3>
+            <p>Temu · Shenzhen</p>
+          </div>
           <p class="experience-description">Analyzed acquisition, activation, retention and monetization across more than 20 markets; automated recurring reporting and translated funnel behavior into growth decisions.</p>
+          <ul aria-label="Focus areas"><li>20+ markets</li><li>Funnel analytics</li><li>Automation</li></ul>
         </article>
-        <article class="experience-row">
-          <div class="experience-period">2023</div>
-          <div class="experience-role"><h3>Research &amp; Finance Internships</h3><p>Securities research and corporate finance</p></div>
-          <p class="experience-description">Worked across equity research, macroeconomic analysis and financial reporting, building an early foundation in rigorous analysis and executive communication.</p>
+        <article class="experience-row experience-row-secondary">
+          <p class="experience-period">2023</p>
+          <div class="experience-role">
+            <h3>Research &amp; Finance Internships</h3>
+            <p>Securities research and corporate finance</p>
+          </div>
+          <p class="experience-description">Built an early foundation in rigorous analysis, financial reporting and executive communication.</p>
+          <ul aria-label="Focus areas"><li>Research</li><li>Financial analysis</li></ul>
         </article>
       </div>
 
       <aside class="work-boundary" aria-label="Confidential work boundary">
-        <span class="boundary-mark" aria-hidden="true">⌁</span>
+        <span class="boundary-mark" aria-hidden="true">NDA</span>
         <div>
-          <p class="section-index">A note on professional work</p>
-          <h3>Confidentiality is part of the design constraint.</h3>
+          <p class="section-label">Professional work</p>
+          <h3>Confidentiality is an engineering constraint.</h3>
         </div>
-        <p>Protected data, internal interfaces and operating details are intentionally omitted. I show the problem class, my responsibility, system boundaries and decisions at a level appropriate for public review.</p>
+        <p>Protected data and internal interfaces are intentionally omitted. Public case studies show the problem class, my responsibility, system boundaries and decisions at a level appropriate for review.</p>
       </aside>
     </section>
 
     <section class="about-section" id="about" aria-labelledby="about-title">
-      <div class="section-intro">
-        <p class="section-index">03 / About</p>
+      <div class="section-heading">
+        <p class="section-label">03 / About</p>
         <div>
-          <h2 id="about-title">Technical depth, product judgment.</h2>
-          <p>I am most useful where the problem is consequential, the requirements are still moving and a credible solution needs both engineering and judgment.</p>
+          <h2 id="about-title">Technical depth,<br />product judgment.</h2>
+          <p>I am most useful where the requirements are moving and a credible product needs both engineering discipline and a clear human boundary.</p>
         </div>
       </div>
 
       <div class="about-grid">
         <figure class="about-portrait">
-          <img src="/images/kimberly-portrait.jpg" alt="Kimberly Huang" width="1800" height="2400" loading="lazy" />
+          <img
+            src="/images/kimberly-portrait-1400.jpg"
+            srcset="/images/kimberly-portrait-thumb.jpg 320w, /images/kimberly-portrait-1400.jpg 1050w"
+            sizes="(max-width: 720px) calc(100vw - 2rem), 38vw"
+            alt="Kimberly Huang standing outside Columbia University"
+            width="1050"
+            height="1400"
+            loading="lazy"
+          />
           <figcaption>Kimberly (Qijing) Huang · New York</figcaption>
         </figure>
+
         <div class="about-copy">
-          <p class="about-lede">My work sits between applied AI, data engineering and product design. I care about where a system should stop—not only what it can automate.</p>
-          <p>That means designing explicit review boundaries, separating model output from observable evidence and building interfaces that make uncertainty legible.</p>
-          <div class="education-stack">
-            <article><span>2025—26</span><div><h3>Columbia University</h3><p>MS Applied Analytics · GPA 4.0 · Expected Dec 2026</p></div></article>
+          <p class="about-lede">I work between applied AI, data engineering and product design. My strongest work makes model output useful without disguising uncertainty.</p>
+          <p>That means separating probabilistic perception from deterministic checks, exposing the evidence behind a recommendation and knowing where automation should stop.</p>
+
+          <div class="education-stack" aria-label="Education">
+            <article><span>2025—26</span><div><h3>Columbia University</h3><p>MS Applied Analytics · GPA 4.0 · Expected December 2026</p></div></article>
             <article><span>Undergraduate</span><div><h3>University of Dundee</h3><p>BSc Applied Finance · Top 1% · ACCA certified</p></div></article>
           </div>
         </div>

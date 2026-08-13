@@ -6,9 +6,12 @@ export type Project = {
   summary: string;
   contribution: string;
   outcome: string;
+  proof: string;
+  status: string;
   tags: string[];
   preview: "crewverify" | "signal" | "lablens" | "tabflow" | "repairs";
   demo?: string;
+  video?: string;
   repo?: string;
   award?: string;
 };
@@ -18,29 +21,34 @@ export const featuredProjects: Project[] = [
     slug: "crewverify",
     number: "01",
     title: "CrewVerify",
-    eyebrow: "AI operations product · 2026",
+    eyebrow: "Multimodal operations · 2026",
     summary:
-      "A review workflow that converts photographed construction timesheets into structured records while preserving accountable human approval.",
+      "Turns photographed construction timesheets into structured records, then routes observable exceptions through foreman and manager review.",
     contribution:
-      "Defined the product boundary and built the multimodal extraction route, deterministic validation engine and two-stage review experience.",
+      "I defined the product boundary and built the authenticated extraction route, deterministic validation engine, review stages and audit-oriented interface.",
     outcome:
-      "A deployed workflow with synthetic test scenarios, inspectable exceptions and an explicit approval boundary before export.",
-    tags: ["Next.js", "TypeScript", "Vision AI", "Validation"],
+      "A functional end-to-end assessment prototype covering intake, extraction, seven inspectable checks, exception resolution, approval and CSV export.",
+    proof: "Live end-to-end prototype",
+    status: "Functional assessment prototype",
+    tags: ["Next.js", "TypeScript", "Multimodal AI", "Rule engine"],
     preview: "crewverify",
+    demo: "https://crewverify.vercel.app",
     repo: "https://github.com/Kimberly-Huang/crewverify",
   },
   {
     slug: "student-signal-copilot",
     number: "02",
     title: "Student Signal Copilot",
-    eyebrow: "Multi-agent workflow · NYC Tech Week",
+    eyebrow: "Multi-agent operations · NYC Tech Week",
     summary:
-      "A facilities copilot that turns student observations into grounded work orders and verifies whether a reported issue was actually resolved.",
+      "Turns a student’s observation into a grounded work order, exposes the reasoning trace and asks the original reporter whether the repair worked.",
     contribution:
-      "Co-built the signal-to-verification workflow, confidence model, specialist-agent orchestration and auditable operator experience.",
+      "I co-built the signal-to-verification workflow, confidence model, specialist-agent orchestration and auditable operator experience.",
     outcome:
-      "Awarded 3rd Place Overall at The City Hacks The State during NYC Tech Week 2026.",
-    tags: ["Agentic AI", "TypeScript", "Public data", "Human review"],
+      "A working operator dashboard and streamed copilot grounded in asset and public data; awarded 3rd Place Overall at The City Hacks The State.",
+    proof: "3rd Place Overall",
+    status: "Team hackathon build",
+    tags: ["Agent orchestration", "TypeScript", "SSE", "Public data"],
     preview: "signal",
     repo: "https://github.com/lvelf/Student-Signal-Copilot",
     award: "3rd Place Overall",
@@ -51,14 +59,17 @@ export const featuredProjects: Project[] = [
     title: "LabLens",
     eyebrow: "AI learning product · 2026",
     summary:
-      "Interactive STEM mini-labs that diagnose a learner’s misconception before offering a targeted Socratic hint.",
+      "Interactive STEM mini-labs that diagnose the learner’s mental model before offering the smallest useful Socratic hint.",
     contribution:
-      "Designed and built the misconception-first learning flow, interactive experiments and teacher-ready session reports.",
+      "I designed and built the misconception-first learning flow, interactive experiments, coaching route and teacher-ready session report.",
     outcome:
-      "Three deployed mini-labs with a working AI coaching route and a resilient offline fallback.",
-    tags: ["Next.js", "Learning design", "LLM orchestration"],
+      "Three deployed mini-labs spanning physics, calculus and chemistry, with a working AI coaching route and deterministic offline fallback.",
+    proof: "3 deployed mini-labs",
+    status: "Deployed learning prototype",
+    tags: ["Next.js", "Learning design", "LLM orchestration", "Resilient UX"],
     preview: "lablens",
     demo: "https://lablens-gules.vercel.app",
+    video: "https://www.youtube.com/watch?v=TtZT0p-GlPQ",
     repo: "https://github.com/Kimberly-Huang/Lablens",
   },
 ];
@@ -69,9 +80,11 @@ export const additionalProjects: Project[] = [
     number: "04",
     title: "TabFlow",
     eyebrow: "Browser productivity",
-    summary: "A privacy-aware new-tab workspace that organizes open tabs into focused missions.",
-    contribution: "Designed the local-first interaction model and provider-flexible AI setup.",
-    outcome: "A serverless Manifest V3 extension with custom rules and cross-device sync.",
+    summary: "A local-first Chrome workspace that turns open tabs into focused missions without a backend.",
+    contribution: "Designed the interaction model, provider-flexible AI setup and cross-device preference layer.",
+    outcome: "A serverless Manifest V3 extension with local caching, custom rules and optional local-model support.",
+    proof: "No-backend extension",
+    status: "Open-source extension",
     tags: ["JavaScript", "Chrome MV3", "Local-first"],
     preview: "tabflow",
     repo: "https://github.com/Kimberly-Huang/Tabflow",
@@ -81,9 +94,11 @@ export const additionalProjects: Project[] = [
     number: "05",
     title: "signal.repairs",
     eyebrow: "Software intelligence",
-    summary: "Early-warning signals and repair guidance for open-source software supply chains.",
-    contribution: "Built dependency analysis, web-signal collection and the repair dashboard.",
-    outcome: "A full-stack prototype with scheduled intelligence and bounded repair actions.",
+    summary: "Weak-signal monitoring and bounded repair guidance for software supply-chain risk.",
+    contribution: "Built dependency analysis, web-signal collection, risk scoring and the repair dashboard.",
+    outcome: "A full-stack hackathon prototype with a scheduled intelligence pipeline and inspectable repair actions.",
+    proof: "Scheduled intelligence pipeline",
+    status: "DeveloperWeek prototype",
     tags: ["FastAPI", "Next.js", "Web intelligence"],
     preview: "repairs",
     repo: "https://github.com/Kimberly-Huang/signal-repairs",

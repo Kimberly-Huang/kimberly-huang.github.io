@@ -56,10 +56,16 @@ const { slug, steps } = Astro.props;
     tabs.forEach((tab, index) => {
       tab.addEventListener("click", () => activate(tab));
       tab.addEventListener("keydown", (event: KeyboardEvent) => {
-        if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+        const supported = ["ArrowRight", "ArrowLeft", "ArrowDown", "ArrowUp", "Home", "End"];
+        if (!supported.includes(event.key)) return;
         event.preventDefault();
-        const direction = event.key === "ArrowRight" ? 1 : -1;
-        const next = tabs[(index + direction + tabs.length) % tabs.length];
+        const direction = event.key === "ArrowRight" || event.key === "ArrowDown" ? 1 : -1;
+        const nextIndex = event.key === "Home"
+          ? 0
+          : event.key === "End"
+            ? tabs.length - 1
+            : (index + direction + tabs.length) % tabs.length;
+        const next = tabs[nextIndex];
         activate(next);
         next.focus();
       });

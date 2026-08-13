@@ -3,10 +3,12 @@ export type CaseStudy = {
   thesis: string;
   role: string;
   context: string;
+  facts: { label: string; value: string }[];
   metrics: { value: string; label: string }[];
   flow: { label: string; title: string; body: string; evidence: string }[];
   sections: { eyebrow: string; title: string; body: string[] }[];
   principles: string[];
+  limitation: string;
 };
 
 export const caseStudies: Record<string, CaseStudy> = {
@@ -18,11 +20,16 @@ export const caseStudies: Record<string, CaseStudy> = {
       "I defined the product boundary and built the authenticated extraction route, validation engine, review stages and audit-oriented interface.",
     context:
       "Paper timesheets remain practical on construction sites, but office review is repetitive and errors can affect payroll preparation, job costing and accountability.",
+    facts: [
+      { label: "Responsibility", value: "Product definition + full-stack build" },
+      { label: "Core stack", value: "Next.js 16 · React 19 · Claude multimodal" },
+      { label: "Current scope", value: "Functional assessment prototype" },
+    ],
     metrics: [
-      { value: "03", label: "synthetic failure scenarios" },
-      { value: "02", label: "human approval stages" },
-      { value: "07", label: "deterministic checks" },
-      { value: "01", label: "approved export" },
+      { value: "3", label: "synthetic failure modes" },
+      { value: "7", label: "inspectable validation rules" },
+      { value: "2", label: "separate approval stages" },
+      { value: "1", label: "end-to-end export path" },
     ],
     flow: [
       {
@@ -74,6 +81,8 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Require explicit duplicate decisions.",
       "Preserve separate foreman and manager responsibility.",
     ],
+    limitation:
+      "This is an assessment prototype using synthetic operational records. Workflow state is held in the browser session and one demo account exercises both review roles; production would require durable storage, role-based identity and a measured pilot against the existing process.",
   },
   "student-signal-copilot": {
     slug: "student-signal-copilot",
@@ -83,11 +92,16 @@ export const caseStudies: Record<string, CaseStudy> = {
       "I co-built the multi-agent product, operator experience, confidence model and signal-to-verification narrative with Rosemary Li and Nuo Chen.",
     context:
       "Facilities teams receive fragmented observations and work orders. Recurring issues can remain buried when reports are incomplete, disconnected or never verified after closure.",
+    facts: [
+      { label: "Responsibility", value: "Workflow + confidence UX, team of three" },
+      { label: "Core stack", value: "Express · TypeScript · Claude · SSE" },
+      { label: "Recognition", value: "3rd Place Overall · NYC Tech Week" },
+    ],
     metrics: [
       { value: "3rd", label: "place overall" },
-      { value: "07", label: "specialist agents" },
-      { value: "04", label: "workflow stages" },
-      { value: "02", label: "human roles in the loop" },
+      { value: "7", label: "narrow specialist agents" },
+      { value: "4", label: "signal-to-verification stages" },
+      { value: "2", label: "human roles in the loop" },
     ],
     flow: [
       {
@@ -139,6 +153,8 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Keep AI read-only and people accountable.",
       "Ask the original reporter whether the fix worked.",
     ],
+    limitation:
+      "The hackathon API token was read-only, so enriched signals persist to an in-memory store rather than writing back into the asset system. The product demonstrates the closed-loop interaction and audit trail, not a production facilities integration.",
   },
   lablens: {
     slug: "lablens",
@@ -148,11 +164,16 @@ export const caseStudies: Record<string, CaseStudy> = {
       "I designed and built the interactive lab experience, misconception checks, coaching route, fallback behavior and teacher-facing session summary.",
     context:
       "Students often receive explanations before anyone checks why their mental model is failing. LabLens turns that diagnostic moment into the center of the learning flow.",
+    facts: [
+      { label: "Responsibility", value: "Product, learning flow + implementation" },
+      { label: "Core stack", value: "Next.js · React · Qwen 2.5-72B" },
+      { label: "Current scope", value: "3 deployed interactive mini-labs" },
+    ],
     metrics: [
-      { value: "03", label: "interactive mini-labs" },
-      { value: "03", label: "diagnostic stages" },
-      { value: "01", label: "teacher report" },
-      { value: "24/7", label: "offline fallback" },
+      { value: "3", label: "interactive mini-labs" },
+      { value: "3", label: "hand-authored misconception maps" },
+      { value: "1", label: "teacher-ready report" },
+      { value: "24/7", label: "deterministic fallback" },
     ],
     flow: [
       {
@@ -204,5 +225,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Make reasoning visible to the learner and teacher.",
       "Keep the core learning experience resilient.",
     ],
+    limitation:
+      "The current build covers three hand-authored subject taxonomies and keeps history within one session. It does not yet provide persistent learner profiles, curriculum alignment or calibrated classification confidence.",
   },
 };

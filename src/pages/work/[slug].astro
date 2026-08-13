@@ -8,13 +8,17 @@ import { featuredProjects } from "../../data/projects";
 import { caseStudies } from "../../data/caseStudies";
 
 export function getStaticPaths() {
-  return featuredProjects.map((project) => ({
+  return featuredProjects.map((project, index) => ({
     params: { slug: project.slug },
-    props: { project, study: caseStudies[project.slug] },
+    props: {
+      project,
+      study: caseStudies[project.slug],
+      nextProject: featuredProjects[(index + 1) % featuredProjects.length],
+    },
   }));
 }
 
-const { project, study } = Astro.props;
+const { project, study, nextProject } = Astro.props;
 ---
 
 <BaseLayout
@@ -29,47 +33,71 @@ const { project, study } = Astro.props;
         <p class="eyebrow">{project.eyebrow}</p>
         <h1>{project.title}</h1>
         <p class="case-thesis">{study.thesis}</p>
-        <div class="case-role"><span>My role</span><p>{study.role}</p></div>
+        <div class="case-role">
+          <span>My role</span>
+          <p>{study.role}</p>
+        </div>
         <div class="project-links case-hero-links">
-          {project.demo && <a href={project.demo} target="_blank" rel="noreferrer">Live demo ↗</a>}
-          {project.repo && <a href={project.repo} target="_blank" rel="noreferrer">GitHub ↗</a>}
+          {project.demo && <a class="project-action project-action-primary" href={project.demo} target="_blank" rel="noreferrer">Live product <span aria-hidden="true">↗</span></a>}
+          {project.video && <a class="project-action" href={project.video} target="_blank" rel="noreferrer">Demo video <span aria-hidden="true">↗</span></a>}
+          {project.repo && <a class="project-action" href={project.repo} target="_blank" rel="noreferrer">View source <span aria-hidden="true">↗</span></a>}
         </div>
       </div>
-      <ProjectPreview kind={project.preview} />
+      <div class="case-hero-visual">
+        <ProjectPreview kind={project.preview} />
+      </div>
     </section>
 
+    <dl class="case-facts" aria-label="Project facts">
+      {study.facts.map((fact) => <div><dt>{fact.label}</dt><dd>{fact.value}</dd></div>)}
+    </dl>
+
     <section class="case-context">
-      <p class="section-index">Context</p>
+      <p class="section-label">The operating problem</p>
       <p>{study.context}</p>
     </section>
 
-    <section class="case-metrics" aria-label="Case study results">
-      {study.metrics.map((metric) => <div><strong>{metric.value}</strong><span>{metric.label}</span></div>)}
+    <section class="case-evidence" aria-labelledby="evidence-title">
+      <div class="case-section-heading">
+        <p class="section-label">Evidence</p>
+        <div><h2 id="evidence-title">What exists in the current build.</h2><p>These numbers describe tested product scope—not production impact.</p></div>
+      </div>
+      <div class="case-metrics" aria-label="Current build scope">
+        {study.metrics.map((metric) => <div><strong>{metric.value}</strong><span>{metric.label}</span></div>)}
+      </div>
     </section>
 
     <section class="case-process" aria-labelledby="process-title">
       <div class="case-section-heading">
-        <p class="section-index">Workflow</p>
-        <h2 id="process-title">How the system moves from problem to proof.</h2>
+        <p class="section-label">System workflow</p>
+        <div><h2 id="process-title">From input to accountable action.</h2><p>The interface keeps model work, deterministic checks and human responsibility distinct.</p></div>
       </div>
       <CaseStudyFlow slug={study.slug} steps={study.flow} />
     </section>
 
-    {study.sections.map((section, index) => (
-      <section class="case-narrative">
-        <div><p class="section-index">{String(index + 1).padStart(2, "0")} / {section.eyebrow}</p><h2>{section.title}</h2></div>
-        <div>{section.body.map((paragraph) => <p>{paragraph}</p>)}</div>
-      </section>
-    ))}
+    <div class="case-narratives">
+      {study.sections.map((section, index) => (
+        <section class="case-narrative">
+          <div><p class="section-label">{String(index + 1).padStart(2, "0")} / {section.eyebrow}</p><h2>{section.title}</h2></div>
+          <div>{section.body.map((paragraph) => <p>{paragraph}</p>)}</div>
+        </section>
+      ))}
+    </div>
+
+    <aside class="case-limitation" aria-labelledby="limitation-title">
+      <p class="section-label">Honest limitation</p>
+      <h2 id="limitation-title">What this project does not prove—yet.</h2>
+      <p>{study.limitation}</p>
+    </aside>
 
     <section class="case-principles">
-      <p class="section-index">Design principles</p>
+      <p class="section-label">Design principles</p>
       <ol>{study.principles.map((principle) => <li>{principle}</li>)}</ol>
     </section>
 
     <section class="next-case">
-      <p class="section-index">Continue exploring</p>
-      <a href="/#work">View all selected work <span aria-hidden="true">→</span></a>
+      <p class="section-label">Next case study</p>
+      <a href={`/work/${nextProject.slug}`}><span>{nextProject.title}</span><span aria-hidden="true">→</span></a>
     </section>
   </main>
   <Footer />

@@ -14,41 +14,43 @@ const { project, compact = false } = Astro.props;
   <article class="project-row">
     <span class="project-number">{project.number}</span>
     <div class="project-row-title">
-      <h4>{project.title}</h4>
       <p>{project.eyebrow}</p>
+      <h3>{project.title}</h3>
     </div>
     <p class="project-row-summary">{project.summary}</p>
+    <span class="project-row-proof">{project.proof}</span>
     <a href={project.repo ?? `/work/${project.slug}`} target={project.repo ? "_blank" : undefined} rel={project.repo ? "noreferrer" : undefined} aria-label={`View ${project.title}`}>
       <span aria-hidden="true">↗</span>
     </a>
   </article>
 ) : (
-  <article class:list={["project-card", `project-card-${project.preview}`]}>
+  <article class:list={["project-card", project.number === "01" && "project-card-primary"]}>
     <a class="project-visual-link" href={`/work/${project.slug}`} aria-label={`Read ${project.title} case study`}>
       <ProjectPreview kind={project.preview} />
     </a>
     <div class="project-copy">
-      <div class="project-meta">
+      <div class="project-kicker">
         <span>{project.number}</span>
         <p>{project.eyebrow}</p>
-        {project.award && <strong>{project.award}</strong>}
+        <strong>{project.proof}</strong>
       </div>
       <div class="project-intro">
         <h3>{project.title}</h3>
         <p>{project.summary}</p>
       </div>
-      <dl class="project-evidence">
-        <div><dt>Contribution</dt><dd>{project.contribution}</dd></div>
-        <div><dt>Evidence</dt><dd>{project.outcome}</dd></div>
-      </dl>
+      <div class="project-contribution">
+        <span>My contribution</span>
+        <p>{project.contribution}</p>
+      </div>
       <div class="project-footer">
         <ul aria-label={`${project.title} technologies`}>
           {project.tags.map((tag) => <li>{tag}</li>)}
         </ul>
         <div class="project-links">
-          <a class="project-action project-action-primary" href={`/work/${project.slug}`}>Case study <span aria-hidden="true">→</span></a>
+          <a class="project-action project-action-primary" href={`/work/${project.slug}`}>Read case study <span aria-hidden="true">→</span></a>
           {project.demo && <a class="project-action" href={project.demo} target="_blank" rel="noreferrer">Live product <span aria-hidden="true">↗</span></a>}
-          {project.repo && <a class="project-action" href={project.repo} target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>}
+          {project.video && <a class="project-action" href={project.video} target="_blank" rel="noreferrer">Demo video <span aria-hidden="true">↗</span></a>}
+          {project.repo && <a class="project-action project-action-quiet" href={project.repo} target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>}
         </div>
       </div>
     </div>
