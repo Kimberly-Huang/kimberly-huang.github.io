@@ -7,7 +7,9 @@ import Footer from "../components/Footer.astro";
 import { additionalProjects, featuredProjects } from "../data/projects";
 import { site } from "../data/site";
 
-const featuredBuild = featuredProjects[0];
+// The hero slot goes to the build with external recognition, not simply the first one.
+const featuredBuild =
+  featuredProjects.find((project) => project.award) ?? featuredProjects[0];
 ---
 
 <BaseLayout>
@@ -16,7 +18,24 @@ const featuredBuild = featuredProjects[0];
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow"><span aria-hidden="true"></span>New York · Available for full-time roles in 2027</p>
+          <div class="hero-identity">
+            <picture>
+              <source srcset="/images/kimberly-avatar-256.webp" type="image/webp" />
+              <img
+                class="hero-avatar"
+                src="/images/kimberly-avatar-256.jpg"
+                alt="Kimberly Huang"
+                width="256"
+                height="256"
+                fetchpriority="high"
+              />
+            </picture>
+            <div class="hero-identity-copy">
+              <p class="hero-name">Kimberly (Qijing) Huang</p>
+              <p class="hero-role">Applied AI &amp; Data Engineer · New York</p>
+              <p class="eyebrow"><span aria-hidden="true"></span>Graduating December 2026 · open to full-time roles in 2027</p>
+            </div>
+          </div>
           <h1 id="hero-title">Applied AI,<br /><em>engineered for real work.</em></h1>
           <p class="hero-summary">
             I build human-in-the-loop products that turn messy inputs into inspectable decisions—combining multimodal AI, deterministic validation and production-minded interfaces.
@@ -31,8 +50,8 @@ const featuredBuild = featuredProjects[0];
 
         <aside class="hero-feature" aria-label="Featured project">
           <div class="hero-feature-topline">
-            <span>Featured build</span>
-            <span>{featuredBuild.status}</span>
+            <span>Most recognised build</span>
+            <span>{featuredBuild.award ?? featuredBuild.status}</span>
           </div>
           <a href={`/work/${featuredBuild.slug}`} class="hero-feature-visual" aria-label={`Explore ${featuredBuild.title}`}>
             <ProjectPreview kind={featuredBuild.preview} />
@@ -146,27 +165,14 @@ const featuredBuild = featuredProjects[0];
       </div>
 
       <div class="about-grid">
-        <figure class="about-portrait">
-          <img
-            src="/images/kimberly-portrait-1400.jpg"
-            srcset="/images/kimberly-portrait-thumb.jpg 320w, /images/kimberly-portrait-1400.jpg 1050w"
-            sizes="(max-width: 720px) calc(100vw - 2rem), 38vw"
-            alt="Kimberly Huang standing outside Columbia University"
-            width="1050"
-            height="1400"
-            loading="lazy"
-          />
-          <figcaption>Kimberly (Qijing) Huang · New York</figcaption>
-        </figure>
-
         <div class="about-copy">
-          <p class="about-lede">I work between applied AI, data engineering and product design. My strongest work makes model output useful without disguising uncertainty.</p>
-          <p>That means separating probabilistic perception from deterministic checks, exposing the evidence behind a recommendation and knowing where automation should stop.</p>
+          <p class="about-lede">The hard part is the boundary: what the model may decide, what code must decide, and what a person has to sign.</p>
+          <p>So I separate probabilistic perception from deterministic checks, keep the evidence behind a recommendation visible, and design the point where automation stops before it costs someone money or trust.</p>
+        </div>
 
-          <div class="education-stack" aria-label="Education">
-            <article><span>2025—26</span><div><h3>Columbia University</h3><p>MS Applied Analytics · GPA 4.0 · Expected December 2026</p></div></article>
-            <article><span>Undergraduate</span><div><h3>University of Dundee</h3><p>BSc Applied Finance · Top 1% · ACCA certified</p></div></article>
-          </div>
+        <div class="education-stack" aria-label="Education">
+          <article><span>2025—26</span><div><h3>Columbia University</h3><p>MS Applied Analytics · GPA 4.0 · Expected December 2026</p></div></article>
+          <article><span>Undergraduate</span><div><h3>University of Dundee</h3><p>BSc Applied Finance · Top 1% · ACCA certified</p></div></article>
         </div>
       </div>
 
