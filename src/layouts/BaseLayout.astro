@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import SpeedInsights from "@vercel/speed-insights/astro";
 
 interface Props {
   title?: string;
@@ -161,5 +162,6 @@ const structuredData = {
       }
     </script>
     <script is:inline defer src="/_vercel/insights/script.js"></script>
+    <SpeedInsights />
   </body>
 </html>
